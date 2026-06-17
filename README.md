@@ -4,6 +4,8 @@
 
 O **LocalInsta** é uma solução corporativa desenvolvida para transformar a gestão de redes sociais (Instagram) em um processo silencioso, eficiente e estratégico. Projetado para proprietários de empresas e diretores que buscam manter uma presença digital impecável sem o custo de tempo da operação manual.
 
+<img width="1080" height="752" alt="image" src="https://github.com/user-attachments/assets/cffa4918-fcd2-42d3-a304-6da986436437" />
+
 ---
 
 ## 🛠 O que o LocalInsta faz por sua empresa?
@@ -38,6 +40,8 @@ Mantenha seu engajamento alto 24h por dia. O robô gerencia um estoque de mídia
 1.  **Alimentação:** Você apenas solta as fotos nas pastas correspondentes (Feed ou Story).
 2.  **Configuração:** Define o tom de voz da sua marca e os horários de sua preferência.
 3.  **Execução:** O LocalInsta assume o comando, analisa as imagens, escreve as legendas e publica de forma orgânica e segura.
+
+<img width="1058" height="644" alt="image" src="https://github.com/user-attachments/assets/f2fbe496-06eb-41b9-92f7-8fca90c7f658" />
 
 ---
 
