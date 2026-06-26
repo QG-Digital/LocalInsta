@@ -174,10 +174,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ── MOBILE MENU TOGGLE ──
 document.addEventListener('DOMContentLoaded', function() {
-  // Cria o botão hambúrguer no header
   const header = document.querySelector('.header');
   const headerNav = document.querySelector('.header-nav');
   const headerRight = document.querySelector('.header-right');
+
+  // Remove menu toggle antigo se existir (evita duplicação)
+  const oldToggle = document.querySelector('.menu-toggle');
+  if (oldToggle) oldToggle.remove();
 
   if (header && headerNav) {
     // Cria o botão hambúrguer
@@ -194,9 +197,17 @@ document.addEventListener('DOMContentLoaded', function() {
     header.insertBefore(menuToggle, headerNav);
 
     // Toggle do menu
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
       this.classList.toggle('active');
       headerNav.classList.toggle('open');
+      
+      // Ajusta o body para não rolar quando o menu está aberto
+      if (headerNav.classList.contains('open')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
     });
 
     // Fecha o menu ao clicar em um link
@@ -204,7 +215,17 @@ document.addEventListener('DOMContentLoaded', function() {
       link.addEventListener('click', function() {
         menuToggle.classList.remove('active');
         headerNav.classList.remove('open');
+        document.body.style.overflow = '';
       });
+    });
+
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', function(e) {
+      if (!header.contains(e.target) && headerNav.classList.contains('open')) {
+        menuToggle.classList.remove('active');
+        headerNav.classList.remove('open');
+        document.body.style.overflow = '';
+      }
     });
   }
 });
