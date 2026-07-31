@@ -174,7 +174,7 @@ function tocarVideoHero() {
   const thumb = document.getElementById('heroVideoThumb');
   const frame = document.querySelector('.hero-video-frame');
   if (frame) {
-    frame.innerHTML = '<div style="position:relative;padding-bottom:56.25%;"><iframe src="https://www.youtube.com/embed/Ru8_2xxchpI?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>';
+    frame.innerHTML = '<div style="position:relative;padding-bottom:56.25%;"><iframe src="https://www.youtube.com/watch?v=HnNemVCRQhg" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>';
   }
 }
 
