@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LocalInsta: Automação de Instagram para empresas. Publica automaticamente com IA Vision. Segurança Local-First. Sem assinatura mensal.">
+  <meta name="author" content="QG Digital">
+  
+  <title>Painel Real - LocalInsta | Automação de Instagram com IA Vision</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <style>
+    .demo-hero { padding: 120px 0 40px; background: var(--dark); color: white; }
+    .demo-hero h1 { font-size: 40px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .demo-hero p { font-size: 16px; color: #94a3b8; max-width: 560px; line-height: 1.7; }
+    .demo-hero .badge-row { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    .demo-hero .badge-row span { font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 20px; background: rgba(16,185,129,0.15); color: #10B981; border: 1px solid rgba(16,185,129,0.3); }
+
+    /* App Panel Styles */
+    .app-panel { padding: 40px 0 80px; background: #f8fafc; }
+    .app-panel-wrapper {
+      max-width: 1000px; margin: 0 auto;
+      background: white; border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .app-panel-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 14px 20px;
+      background: #f1f5f9; border-bottom: 1px solid var(--border);
+    }
+    .app-panel-header .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .app-panel-header .dot.r { background: #ef4444; }
+    .app-panel-header .dot.y { background: #eab308; }
+    .app-panel-header .dot.g { background: #22c55e; }
+    .app-panel-header .title { margin-left: 16px; font-size: 13px; font-weight: 600; color: var(--text); }
+    .app-panel-header .status { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green); font-weight: 600; }
+    .app-panel-header .status::before { content: ''; width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+    .app-panel-body { display: flex; min-height: 500px; }
+
+    /* Sidebar */
+    .app-sidebar-panel {
+      width: 200px; background: #111; padding: 16px 0;
+      flex-shrink: 0; display: flex; flex-direction: column;
+    }
+    .app-sidebar-panel .brand { display: flex; align-items: center; gap: 8px; padding: 0 16px 16px; border-bottom: 1px solid #333; }
+    .app-sidebar-panel .brand-icon { width: 28px; height: 28px; background: var(--green); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 14px; }
+    .app-sidebar-panel .brand-text { color: white; font-size: 14px; font-weight: 700; }
+    .app-sidebar-panel .nav-section { padding: 12px 0; }
+    .app-sidebar-panel .nav-label { font-size: 10px; color: #666; padding: 0 16px 8px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .app-sidebar-panel .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 16px; font-size: 13px; color: #888; cursor: pointer; transition: all 0.15s; }
+    .app-sidebar-panel .nav-item:hover { background: rgba(255,255,255,0.05); color: #bbb; }
+    .app-sidebar-panel .nav-item.active { background: rgba(16,185,129,0.12); color: #10B981; font-weight: 600; }
+    .app-sidebar-panel .nav-item .icon { width: 18px; text-align: center; font-size: 14px; }
+
+    /* Content Area */
+    .app-content-panel { flex: 1; padding: 24px; overflow-y: auto; }
+    .panel-tab { display: none; }
+    .panel-tab.active { display: block; }
+    .panel-title { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .panel-subtitle { font-size: 13px; color: var(--text-light); margin-bottom: 24px; }
+
+    /* Dashboard Tab */
+    .dash-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .dash-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .dash-card .label { font-size: 11px; color: var(--text-light); margin-bottom: 6px; }
+    .dash-card .value { font-size: 26px; font-weight: 800; color: var(--dark); }
+    .dash-card .change { font-size: 11px; font-weight: 600; }
+    .dash-card .change.up { color: var(--green); }
+    .dash-card .change.down { color: #ef4444; }
+
+    /* Schedule Table */
+    .schedule-table { width: 100%; border-collapse: collapse; }
+    .schedule-table th { text-align: left; font-size: 11px; color: var(--text-light); font-weight: 600; padding: 8px 12px; border-bottom: 2px solid var(--border); text-transform: uppercase; letter-spacing: 0.04em; }
+    .schedule-table td { font-size: 13px; padding: 10px 12px; border-bottom: 1px solid #f1f5f9; color: var(--text); }
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .tag-feed { background: #E8F5E9; color: var(--green); }
+    .tag-reels { background: #FFF3E0; color: #E65100; }
+    .tag-stories { background: #E3F2FD; color: #1565C0; }
+    .tag-status-active { color: var(--green); font-weight: 600; }
+    .tag-status-pending { color: #eab308; font-weight: 600; }
+
+    /* Form fields */
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 10px 12px; border: 1px solid var(--border);
+      border-radius: 8px; font-size: 14px; font-family: inherit;
+      background: #fafafa; color: var(--text); transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--green); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* Toggle */
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
+    .toggle-row .label { font-size: 13px; color: var(--text); }
+    .toggle-row .desc { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+    .toggle-switch { width: 44px; height: 24px; background: #ddd; border-radius: 12px; position: relative; cursor: pointer; transition: background 0.2s; }
+    .toggle-switch.on { background: var(--green); }
+    .toggle-switch::after { content: ''; position: absolute; width: 20px; height: 20px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    .toggle-switch.on::after { transform: translateX(20px); }
+
+    /* Buttons in panel */
+    .btn-panel { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+    .btn-panel-primary { background: var(--green); color: white; }
+    .btn-panel-primary:hover { background: var(--green-light); }
+    .btn-panel-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+
+    /* Info tab */
+    .info-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+    .info-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+    .info-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+    .video-section { padding: 60px 0; background: white; }
+    .video-section h2 { font-size: 24px; font-weight: 800; color: var(--dark); text-align: center; margin-bottom: 8px; }
+    .video-section .sub { text-align: center; font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
+    .video-frame { max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border); }
+    .video-frame-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #f1f5f9; border-bottom: 1px solid var(--border); }
+    .demo-note { max-width: 800px; margin: 20px auto 0; text-align: center; font-size: 12px; color: var(--text-secondary); padding: 12px; background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); border-radius: 8px; }
+    .plano-card { position: relative; background: white; border: 2px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; cursor: pointer; transition: all 0.15s; }
+    .plano-card:hover { border-color: var(--green); }
+    .plano-card.active { border-color: var(--green); background: var(--green-bg, #E8F5E9); }
+    .plano-card .plano-dias { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .plano-card .plano-total { font-size: 18px; font-weight: 800; color: var(--green); }
+    .plano-card .plano-badge { position: absolute; top: -9px; left: 50%; transform: translateX(-50%); background: var(--green); color: white; font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-weight: 600; font-size: 14px; text-decoration: none; }
+    .back-link:hover { color: var(--green-light); }
+    @media (max-width: 768px) {
+      .app-panel-body { flex-direction: column; }
+      .app-sidebar-panel { width: 100%; flex-direction: row; overflow-x: auto; padding: 8px; }
+      .app-sidebar-panel .brand { display: none; }
+      .app-sidebar-panel .nav-label { display: none; }
+      .app-sidebar-panel .nav-item { white-space: nowrap; font-size: 12px; padding: 8px 12px; }
+      .dash-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">L</div>
+        <span class="logo-text">LocalInsta</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#inicio">Início</a></li>
+        <li><a href="index.html#recursos">Recursos</a></li>
+        <li><a href="cursos.html">Cursos</a></li>
+        <li><a href="painel.html">Painel Real</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe" class="btn btn-outline">Entrar</a>
+        <a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe" class="btn btn-primary btn-download">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Baixar grátis
+        </a>
+      </div>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="demo-hero">
+    <div class="container">
+      <a href="index.html" class="back-link" style="color: #10B981; margin-bottom: 16px; display: inline-flex;">← Voltar para o início</a>
+      <h1>O painel <span style="color: #10B981">real</span> do LocalInsta.</h1>
+      <p>Esta é a interface exata do app, com dados de exemplo do <strong style="color: white;">Atelie Schulze</strong>. Navegue pelas abas — e na aba <strong style="color:white;">Assinatura</strong> o preço mostrado é o valor real, atualizado ao vivo.</p>
+      <div class="badge-row">
+        <span>Interface 100% real</span>
+        <span>Preço ao vivo</span>
+        <span>Dados de exemplo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP PANEL -->
+  <section class="app-panel">
+    <div class="container">
+      <div class="app-panel-wrapper">
+        <div class="app-panel-header">
+          <span class="dot r"></span>
+          <span class="dot y"></span>
+          <span class="dot g"></span>
+          <span class="title">LocalInsta — Painel de Controle</span>
+          <span class="status">Bot Ativo</span>
+        </div>
+        <div class="app-panel-body">
+          <!-- Sidebar -->
+          <div class="app-sidebar-panel">
+            <div class="brand">
+              <div class="brand-icon">L</div>
+              <span class="brand-text">LocalInsta</span>
+            </div>
+            <div class="nav-section">
+              <div class="nav-label">Principal</div>
+              <div class="nav-item active" data-tab="dashboard"><span class="icon"><svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> Automação</div>
+              <div class="nav-item" data-tab="calendar-feed" style="padding-left:32px; font-size:12px;"><span style="color:var(--green); margin-right:4px;">↳</span> 📅 Calendário Feed</div>
+              <div class="nav-item" data-tab="calendar-story" style="padding-left:32px; font-size:12px;"><span style="color:var(--green); margin-right:4px;">↳</span> 📅 Calendário Story</div>
+              <div class="nav-item" data-tab="gallery"><span class="icon"><svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span> Galeria</div>
+              <div class="nav-item" data-tab="brand"><span class="icon"><svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></span> Marca & IA</div>
+            </div>
+            <div class="nav-section">
+              <div class="nav-label">Configurações</div>
+              <div class="nav-item" data-tab="credentials"><span class="icon"><svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3L15.5 7.5z"/></svg></span> Credenciais</div>
+              <div class="nav-item" data-tab="config-feed"><span class="icon"><svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span> Config Feed</div>
+              <div class="nav-item" data-tab="config-story"><span class="icon"><svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></span> Config Story</div>
+            </div>
+            <div class="nav-section">
+              <div class="nav-item" data-tab="assinatura"><span class="icon"><svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M11 3v4M11 13l-3-4M13 13l3-4"/></svg></span> Assinatura</div>
+              <div class="nav-item" data-tab="info"><span class="icon"><svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span> Sobre</div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="app-content-panel">
+
+            <!-- DASHBOARD TAB -->
+            <div class="panel-tab active" id="tab-dashboard">
+              <h2 class="panel-title">Automação</h2>
+              <p class="panel-subtitle">Agendamento inteligente para @atelie_schulze</p>
+              <div class="dash-grid">
+                <div class="dash-card"><div class="label">Posts publicados</div><div class="value">47</div><div class="change up">↑ 12%</div></div>
+                <div class="dash-card"><div class="label">Agendados hoje</div><div class="value">12</div><div class="change">próximos</div></div>
+                <div class="dash-card"><div class="label">Alcance estimado</div><div class="value">2,847</div><div class="change up">↑ 8%</div></div>
+                <div class="dash-card"><div class="label">Próxima publicação</div><div class="value" style="font-size:20px;">14:30</div><div class="change">hoje</div></div>
+              </div>
+              <h3 style="font-size:14px; font-weight:700; margin-bottom:12px; color:var(--dark);">Status da Publicação</h3>
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding:12px 16px; background:white; border:1px solid var(--border); border-radius:10px;">
+                <div style="width:40px; height:40px; background:var(--green-bg); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div>
+                  <div style="font-size:13px; font-weight:600; color:var(--dark);">Última publicação concluída</div>
+                  <div style="font-size:12px; color:var(--text-light);">Hoje às 10:30 — Post de produtos do ateliê</div>
+                </div>
+              </div>
+              <h3 style="font-size:14px; font-weight:700; margin-bottom:12px; color:var(--dark);">Agendamento de Publicações</h3>
+              <table class="schedule-table">
+                <thead><tr><th>Data</th><th>Hora</th><th>Tipo</th><th>Descrição</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>31/07</td><td>14:30</td><td><span class="tag tag-feed">Feed</span></td><td>Dia de mídia social</td><td><span class="tag-status-active">Agendado</span></td></tr>
+                  <tr><td>31/07</td><td>18:00</td><td><span class="tag tag-stories">Stories</span></td><td>Produtos destacados</td><td><span class="tag-status-active">Agendado</span></td></tr>
+                  <tr><td>01/08</td><td>12:00</td><td><span class="tag tag-reels">Reels</span></td><td>Behind the scenes</td><td><span class="tag-status-pending">Pendente</span></td></tr>
+                  <tr><td>01/08</td><td>18:00</td><td><span class="tag tag-feed">Feed</span></td><td>Novos produtos disponíveis</td><td><span class="tag-status-pending">Pendente</span></td></tr>
+                  <tr><td>02/08</td><td>10:00</td><td><span class="tag tag-stories">Stories</span></td><td>Bastidores do ateliê</td><td><span class="tag-status-pending">Pendente</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- GALLERY TAB -->
+            <div class="panel-tab" id="tab-gallery">
+              <h2 class="panel-title">Galeria de Mídia</h2>
+              <p class="panel-subtitle">Imagens e vídeos organizados para publicação</p>
+              <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:16px;">
+                <div style="position:relative; aspect-ratio:1; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="https://picsum.photos/id/30/300/300" style="width:100%;height:100%;object-fit:cover;" alt="Imagem 1"></div>
+                <div style="position:relative; aspect-ratio:1; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="https://picsum.photos/id/40/300/300" style="width:100%;height:100%;object-fit:cover;" alt="Imagem 2"></div>
+                <div style="position:relative; aspect-ratio:1; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="https://picsum.photos/id/48/300/300" style="width:100%;height:100%;object-fit:cover;" alt="Vídeo 1"><span style="position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,0.6);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="white" width="11" height="11"><polygon points="5 3 19 12 5 21 5 3"/></svg></span></div>
+                <div style="position:relative; aspect-ratio:1; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="https://picsum.photos/id/60/300/300" style="width:100%;height:100%;object-fit:cover;" alt="Imagem 3"></div>
+                <div style="position:relative; aspect-ratio:1; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="https://picsum.photos/id/64/300/300" style="width:100%;height:100%;object-fit:cover;" alt="Imagem 4"></div>
+                <div style="position:relative; aspect-ratio:1; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="https://picsum.photos/id/76/300/300" style="width:100%;height:100%;object-fit:cover;" alt="Vídeo 2"><span style="position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,0.6);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="white" width="11" height="11"><polygon points="5 3 19 12 5 21 5 3"/></svg></span></div>
+                <div style="position:relative; aspect-ratio:1; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="https://picsum.photos/id/96/300/300" style="width:100%;height:100%;object-fit:cover;" alt="Imagem 5"></div>
+                <div style="position:relative; aspect-ratio:1; border-radius:10px; overflow:hidden; border:1px solid var(--border);"><img src="https://picsum.photos/id/106/300/300" style="width:100%;height:100%;object-fit:cover;" alt="Imagem 6"></div>
+              </div>
+              <p style="font-size:12px; color:var(--text-light); margin-top:12px;">8 itens na pasta · Arraste para agendar</p>
+            </div>
+
+
+            <!-- CALENDAR TAB - Feed -->
+            <div class="panel-tab" id="tab-calendar-feed">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <div>
+                  <h2 class="panel-title">📅 Planejamento Visual — Feed</h2>
+                  <p class="panel-subtitle">Organize, pré-aprove legendas e agende horários específicos</p>
+                </div>
+                <button class="btn-panel btn-panel-primary" onclick="alert('Disponível no app desktop.')">+ Adicionar Post</button>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin:16px 0 10px;">
+                <button class="btn-panel btn-panel-outline">◀ Anterior</button>
+                <strong style="font-size:14px; color:var(--dark);">Julho 2026</strong>
+                <button class="btn-panel btn-panel-outline">Próximo ▶</button>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-bottom:6px;">
+                <div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Dom</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Seg</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Ter</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Qua</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Qui</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Sex</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Sáb</div>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px;">
+                <div style="aspect-ratio:1; border-radius:8px; background:#f8fafc;"></div><div style="aspect-ratio:1; border-radius:8px; background:#f8fafc;"></div><div style="aspect-ratio:1; border-radius:8px; background:#f8fafc;"></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">1</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/122/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 2"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">2</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">3</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">4</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/125/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 5"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">5</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">6</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/127/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 7"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">7</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">8</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">9</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/130/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 10"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">10</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">11</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">12</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/133/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 13"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">13</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">14</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/135/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 15"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">15</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">16</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">17</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/138/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 18"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">18</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">19</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">20</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/141/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 21"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">21</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">22</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">23</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/144/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 24"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">24</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">25</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">26</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/147/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 27"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">27</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">28</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/149/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 29"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">29</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">30</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/151/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 31"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">31</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Feed</span></div><div style="aspect-ratio:1; border-radius:8px; background:#f8fafc;"></div>
+              </div>
+              <p style="font-size:12px; color:var(--text-light); margin-top:14px;">Miniaturas ilustrativas para demonstração. No app real, as imagens são as suas fotos e vídeos da pasta de mídia.</p>
+            </div>
+
+            <!-- CALENDAR TAB - Story -->
+            <div class="panel-tab" id="tab-calendar-story">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <div>
+                  <h2 class="panel-title">📅 Planejamento Visual — Story</h2>
+                  <p class="panel-subtitle">Organize, pré-aprove legendas e agende horários específicos</p>
+                </div>
+                <button class="btn-panel btn-panel-primary" onclick="alert('Disponível no app desktop.')">+ Adicionar Post</button>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin:16px 0 10px;">
+                <button class="btn-panel btn-panel-outline">◀ Anterior</button>
+                <strong style="font-size:14px; color:var(--dark);">Julho 2026</strong>
+                <button class="btn-panel btn-panel-outline">Próximo ▶</button>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-bottom:6px;">
+                <div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Dom</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Seg</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Ter</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Qua</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Qui</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Sex</div><div style="text-align:center; font-size:11px; font-weight:700; color:var(--text-light); padding:4px 0;">Sáb</div>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px;">
+                <div style="aspect-ratio:1; border-radius:8px; background:#f8fafc;"></div><div style="aspect-ratio:1; border-radius:8px; background:#f8fafc;"></div><div style="aspect-ratio:1; border-radius:8px; background:#f8fafc;"></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">1</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/172/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 2"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">2</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">3</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">4</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/175/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 5"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">5</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">6</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/177/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 7"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">7</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">8</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">9</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/180/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 10"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">10</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">11</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">12</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/183/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 13"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">13</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">14</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/185/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 15"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">15</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">16</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">17</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/188/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 18"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">18</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">19</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">20</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/191/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 21"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">21</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">22</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">23</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/194/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 24"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">24</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">25</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">26</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/197/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 27"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">27</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">28</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/199/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 29"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">29</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; border:1px dashed var(--border); background:#fafafa; display:flex; align-items:flex-start; justify-content:flex-start; padding:5px;"><span style="font-size:11px; font-weight:700; color:var(--text-light);">30</span></div><div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid var(--border); cursor:pointer;"><img src="https://picsum.photos/id/201/200/200" style="width:100%; height:100%; object-fit:cover; opacity:0.75;" alt="Post agendado dia 31"><span style="position:absolute; top:4px; left:6px; font-size:11px; font-weight:700; color:white; text-shadow:0 1px 3px rgba(0,0,0,0.6);">31</span><span style="position:absolute; bottom:4px; right:5px; background:rgba(0,0,0,0.55); color:white; font-size:9px; padding:1px 5px; border-radius:4px;">Story</span></div><div style="aspect-ratio:1; border-radius:8px; background:#f8fafc;"></div>
+              </div>
+              <p style="font-size:12px; color:var(--text-light); margin-top:14px;">Miniaturas ilustrativas para demonstração. No app real, as imagens são as suas fotos e vídeos da pasta de mídia.</p>
+            </div>
+
+            <!-- BRAND TAB -->
+            <div class="panel-tab" id="tab-brand">
+              <h2 class="panel-title">Marca & IA</h2>
+              <p class="panel-subtitle">Configure o estilo da sua marca para geração automática de legendas</p>
+              <div class="form-group">
+                <label>Nome da Marca</label>
+                <input type="text" value="Atelie Schulze" readonly>
+              </div>
+              <div class="form-group">
+                <label>Tom de Voz</label>
+                <select><option>Elegante e acolhedor</option><option>Divertido e casual</option><option>Profissional e direto</option></select>
+              </div>
+              <div class="form-group">
+                <label>Prompt de IA para Legendas</label>
+                <textarea rows="4" readonly>Crie legendas para posts do ateliê Schulze. Use tom elegante e acolhedor. Inclua hashtags relevantes sobre artesanato, decoração e estilo de vida.</textarea>
+              </div>
+              <div class="form-group">
+                <label>Hashtags Automáticas</label>
+                <input type="text" value="#atelieschulze #artesanato #decoracao #feitoamão #decoração" readonly>
+              </div>
+            </div>
+
+            <!-- CREDENTIALS TAB -->
+            <div class="panel-tab" id="tab-credentials">
+              <h2 class="panel-title">Credenciais</h2>
+              <p class="panel-subtitle">Dados de acesso ao Instagram</p>
+              <div class="form-group">
+                <label>Usuário Instagram</label>
+                <input type="text" value="atelie_schulze" readonly>
+              </div>
+              <div class="form-group">
+                <label>Senha</label>
+                <input type="password" value="••••••••••" readonly>
+              </div>
+              <div style="padding:12px 16px; background:#f1f5f9; border-radius:8px; margin-top:8px;">
+                <p style="font-size:12px; color:var(--text-secondary);">🔒 Seus dados ficam salvos apenas no seu computador. O LocalInsta não envia informações para servidores externos.</p>
+              </div>
+              <button class="btn-panel btn-panel-primary" style="margin-top:16px;" onclick="alert('Funcionalidade de login disponível apenas no app desktop.')">Conectar conta</button>
+            </div>
+
+            <!-- CONFIG FEED TAB -->
+            <div class="panel-tab" id="tab-config-feed">
+              <h2 class="panel-title">Configuração — Feed</h2>
+              <p class="panel-subtitle">Personalize o comportamento de publicação no Feed</p>
+              <div class="form-group">
+                <label>Horários de Publicação</label>
+                <div class="form-row">
+                  <input type="text" value="12:00" readonly>
+                  <input type="text" value="18:00" readonly>
+                </div>
+              </div>
+              <div class="toggle-row">
+                <div><div class="label">Publicação automática</div><div class="desc">Publica nos horários configurados</div></div>
+                <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
+              </div>
+              <div class="toggle-row">
+                <div><div class="label">Legenda com IA</div><div class="desc">Gera legenda automaticamente</div></div>
+                <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
+              </div>
+              <div class="toggle-row">
+                <div><div class="label">Filtro de qualidade</div><div class="desc">Publica apenas imagens acima de 1080px</div></div>
+                <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
+              </div>
+            </div>
+
+            <!-- CONFIG STORY TAB -->
+            <div class="panel-tab" id="tab-config-story">
+              <h2 class="panel-title">Configuração — Stories</h2>
+              <p class="panel-subtitle">Personalize o comportamento de publicação de Stories</p>
+              <div class="form-group">
+                <label>Horários de Publicação</label>
+                <div class="form-row">
+                  <input type="text" value="08:00" readonly>
+                  <input type="text" value="18:00" readonly>
+                </div>
+              </div>
+              <div class="toggle-row">
+                <div><div class="label">Publicação automática</div><div class="desc">Publica stories nos horários configurados</div></div>
+                <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
+              </div>
+              <div class="toggle-row">
+                <div><div class="label">Texto automático</div><div class="desc">Adiciona texto sobreposto com IA</div></div>
+                <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
+              </div>
+            </div>
+
+            <!-- ASSINATURA TAB -->
+            <div class="panel-tab" id="tab-assinatura">
+              <h2 class="panel-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" style="vertical-align:middle;margin-right:8px;"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M11 3v4M11 13l-3-4M13 13l3-4"/></svg> Central de Licenciamento</h2>
+              <p class="panel-subtitle">Gerencie sua assinatura — o valor abaixo é o preço real, atualizado ao vivo</p>
+
+              <div class="info-card" style="margin-bottom:20px;" id="precoStatusCard">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <span id="precoStatusDot" style="width:9px;height:9px;border-radius:50%;background:#eab308;display:inline-block;"></span>
+                  <span id="precoStatusTexto" style="font-size:12px;color:var(--text-light);">Consultando preço em tempo real…</span>
+                </div>
+                <div style="margin-top:14px;display:flex;align-items:baseline;gap:6px;">
+                  <span style="font-size:13px;color:var(--text-light);">R$</span>
+                  <span id="precoDia" style="font-size:34px;font-weight:800;color:var(--dark);">--</span>
+                  <span style="font-size:13px;color:var(--text-light);">/dia</span>
+                </div>
+              </div>
+
+              <h3 style="font-size:14px; font-weight:700; margin-bottom:12px; color:var(--dark);">Escolha o período</h3>
+              <div class="form-row" style="grid-template-columns:repeat(3,1fr); margin-bottom:16px;" id="planosGrid">
+                <div class="plano-card" data-dias="7">
+                  <div class="plano-dias">7 dias</div>
+                  <div class="plano-total">R$ --</div>
+                </div>
+                <div class="plano-card active" data-dias="30">
+                  <div class="plano-dias">30 dias</div>
+                  <div class="plano-total">R$ --</div>
+                  <span class="plano-badge">Mais popular</span>
+                </div>
+                <div class="plano-card" data-dias="90">
+                  <div class="plano-dias">90 dias</div>
+                  <div class="plano-total">R$ --</div>
+                </div>
+              </div>
+
+              <button class="btn-panel btn-panel-primary" style="width:100%; justify-content:center; padding:12px;" onclick="baixarApp()">Assinar agora (Baixar App)</button>
+              <div style="padding:12px 16px; background:#f1f5f9; border-radius:8px; margin-top:14px;">
+                <p style="font-size:12px; color:var(--text-secondary);"><svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> O preço por dia acima é puxado ao vivo do servidor real do LocalInsta. O restante do painel usa dados de exemplo para fins de demonstração.</p>
+              </div>
+            </div>
+
+            <!-- INFO TAB -->
+            <div class="panel-tab" id="tab-info">
+              <h2 class="panel-title">Sobre o LocalInsta</h2>
+              <p class="panel-subtitle">Informações do software</p>
+              <div class="info-grid">
+                <div class="info-card">
+                  <h3>LocalInsta v2.1.0</h3>
+                  <p>Ferramenta open source de automação de Instagram. Funciona 100% localmente no seu computador, sem servidor central. Seus dados ficam seguros e privados.</p>
+                  <p style="margin-top:12px;">Desenvolvido por QG Digital.</p>
+                  <p style="margin-top:12px;"><strong>Licença:</strong> MIT (Open Source)</p>
+                </div>
+                <div class="info-card">
+                  <h3>Links</h3>
+                  <p><a href="index.html" style="color:var(--green); text-decoration:none;">🏠 Site oficial</a></p>
+                  <p style="margin-top:8px;"><a href="https://www.instagram.com/app.localinsta/" target="_blank" style="color:var(--green); text-decoration:none;">📷 @app.localinsta</a></p>
+                  <p style="margin-top:8px;"><a href="https://www.youtube.com/watch?v=HnNemVCRQhg" target="_blank" style="color:var(--green); text-decoration:none;">🎬 Vídeo demo</a></p>
+                  <p style="margin-top:8px;"><a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe" style="color:var(--green); text-decoration:none;">💻 GitHub</a></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO SECTION -->
+  <section class="video-section">
+    <div class="container">
+      <h2>Veja o app real em ação</h2>
+      <p class="sub">Tutorial completo: instalação, configuração e primeira postagem automática.</p>
+      <div class="video-frame" id="demoVideo">
+        <div class="video-frame-bar">
+          <span class="dot r" style="width:10px;height:10px;border-radius:50%;background:#ef4444;"></span>
+          <span class="dot y" style="width:10px;height:10px;border-radius:50%;background:#eab308;"></span>
+          <span class="dot g" style="width:10px;height:10px;border-radius:50%;background:#22c55e;"></span>
+          <span style="margin-left:auto;font-size:12px;font-weight:600;color:var(--green);">LocalInsta</span>
+        </div>
+        <div style="position:relative; padding-bottom:56.25%; cursor:pointer;" id="videoThumb" onclick="playDemoVideo()">
+          <img src="https://img.youtube.com/vi/Ru8_2xxchpI/maxresdefault.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Tutorial LocalInsta">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.4);">
+            <svg style="width:24px;height:24px;margin-left:3px;fill:#ef4444;" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="demo-note">
+        <strong style="color:var(--green);">Painel acima:</strong> dados fictícios do Atelie Schulze para demonstração. O app real conecta à sua conta do Instagram.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container cta-inner">
+      <div class="cta-left">
+        <div class="cta-logo">L</div>
+        <div>
+          <h2 class="cta-title">Pronto para automatizar seu Instagram?</h2>
+          <p class="cta-subtitle">Baixe agora o LocalInsta e transforme sua presença digital.</p>
+        </div>
+      </div>
+      <div class="cta-right">
+        <a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe" class="btn btn-white btn-lg">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Baixar grátis para Windows
+        </a>
+        <p class="cta-guarantee">Sem cadastro · Sem mensalidade · 100% seguro</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon">L</div><span class="logo-text">LocalInsta</span></a>
+        <p>A ferramenta completa para automatizar seu Instagram com inteligência artificial. Mais produtividade, mais resultados, menos trabalho.</p>
+      </div>
+      <div class="footer-col"><h4>Navegação</h4><ul><li><a href="index.html#recursos">Recursos</a></li><li><a href="cursos.html">Mini Cursos</a></li><li><a href="painel.html">Painel Real</a></li><li><a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe">Contato</a></li></ul></div>
+      <div class="footer-col"><h4>Suporte</h4><ul><li><a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe">Documentação</a></li><li><a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe">Tutorial</a></li><li><a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe">Comunidade</a></li><li><a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe">Suporte</a></li></ul></div>
+      <div class="footer-col"><h4>Conecte-se</h4><div class="social-links"><a href="https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a><a href="https://www.instagram.com/app.localinsta/" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/watch?v=HnNemVCRQhg" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a></div></div>
+    </div>
+    <div class="footer-bottom"><div class="container"><span>© 2025 QG Digital. Todos os direitos reservados.</span></div></div>
+  </footer>
+
+  <script>
+    // Tab navigation
+    document.querySelectorAll('.nav-item[data-tab]').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        item.classList.add('active');
+        const tabId = item.dataset.tab;
+        document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('tab-' + tabId).classList.add('active');
+      });
+    });
+
+    // ═══ PREÇO REAL — puxa o valor ao vivo do servidor do LocalInsta ═══
+    // ATENÇÃO: troque a URL abaixo pela do seu servidor/API pública (o mesmo
+    // endpoint /api/licenca que o app desktop já usa). Enquanto não houver uma
+    // URL real configurada, ou se o servidor estiver fora do ar, o painel cai
+    // automaticamente para o valor de referência (fallback) definido abaixo.
+    const API_PRECO_URL = 'https://gist.githubusercontent.com/QG-Digital/63a6b6bc7799a6eb588a175e1f40f7e2/raw/preco.json';
+    const PRECO_FALLBACK = 3.89;
+    let precoAtual = PRECO_FALLBACK;
+    let diasSelecionados = 30;
+
+    async function carregarPrecoReal() {
+      const dot = document.getElementById('precoStatusDot');
+      const texto = document.getElementById('precoStatusTexto');
+      try {
+        const res = await fetch(API_PRECO_URL, { cache: 'no-store' });
+        if (!res.ok) throw new Error('offline');
+        const data = await res.json();
+        precoAtual = data.preco_por_dia || PRECO_FALLBACK;
+        dot.style.background = '#22c55e';
+        texto.textContent = 'Preço em tempo real — sincronizado agora';
+      } catch (e) {
+        precoAtual = PRECO_FALLBACK;
+        dot.style.background = '#eab308';
+        texto.textContent = 'Servidor indisponível — mostrando valor de referência';
+      }
+      atualizarPrecos();
+    }
+
+    function atualizarPrecos() {
+      document.getElementById('precoDia').textContent = precoAtual.toFixed(2).replace('.', ',');
+      document.querySelectorAll('.plano-card').forEach(card => {
+        const dias = parseInt(card.dataset.dias, 10);
+        card.querySelector('.plano-total').textContent = 'R$ ' + (dias * precoAtual).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      });
+    }
+
+    document.querySelectorAll('.plano-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.plano-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        diasSelecionados = parseInt(card.dataset.dias, 10);
+      });
+    });
+
+    function baixarApp() {
+      window.location.href = 'https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/Instalador_LocalInsta_v1.2.5.exe';
+    }
+
+    carregarPrecoReal();
+
+    // Video player
+    function playDemoVideo() {
+      const container = document.getElementById('demoVideo');
+      container.innerHTML = '<div style="position:relative;padding-bottom:56.25%;"><iframe src="https://www.youtube.com/embed/Ru8_2xxchpI?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>';
+    }
+
+    // Hamburger
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '64px';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = 'white';
+        navLinks.style.padding = '20px 24px';
+        navLinks.style.gap = '16px';
+        navLinks.style.borderBottom = '1px solid #e2e8f0';
+        navLinks.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
+      });
+    }
+  </script>
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <div class="wa-fab-wrap">
+    <div class="wa-fab-menu" id="waFabMenu">
+      <a href="https://wa.me/5543996975141" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
+      <a href="https://chat.whatsapp.com/Cs2e2ZMwnlPCcL9lropPmk" target="_blank" rel="noopener">🔔 Grupo de avisos</a>
+    </div>
+    <button class="wa-fab-btn" aria-label="WhatsApp" onclick="document.getElementById('waFabMenu').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </button>
+  </div>
+</body>
+</html>
