@@ -174,7 +174,7 @@ function tocarVideoHero() {
   const thumb = document.getElementById('heroVideoThumb');
   const frame = document.querySelector('.hero-video-frame');
   if (frame) {
-    frame.innerHTML = '<div style="position:relative;padding-bottom:56.25%;"><iframe src="https://www.youtube.com/watch?v=HnNemVCRQhg" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>';
+    frame.innerHTML = '<div style="position:relative;padding-bottom:56.25%;"><iframe src="https://www.youtube.com/embed/Ru8_2xxchpI?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>';
   }
 }
 
@@ -189,3 +189,34 @@ if (btnVerDemo && heroVideoDrop) {
     }
   });
 }
+
+/* ─── GOOGLE ADS: Rastreamento de Download ─────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  // Seleciona todos os botões que têm o link do seu .exe
+  const botoesDownload = document.querySelectorAll('a[href*="Instalador_LocalInsta_v1.2.5.exe"]');
+
+  botoesDownload.forEach(botao => {
+    botao.addEventListener('click', function(e) {
+      e.preventDefault(); // Pausa o download por 1 segundo
+      const urlDownload = this.href;
+
+      if (typeof gtag === 'function') {
+        // Envia a conversão exata que o Google te deu
+        gtag('event', 'conversion', {
+            'send_to': 'AW-18338581824/xcruCLyZod0cEMCawqhE',
+            'value': 1.0,
+            'currency': 'BRL',
+            'event_callback': function() {
+               window.location.href = urlDownload;
+            }
+        });
+        
+        // Proteção: se a internet falhar ou houver AdBlock, baixa o arquivo mesmo assim após 1 seg
+        setTimeout(() => { window.location.href = urlDownload; }, 1000);
+      } else {
+        // Se o Google Ads não carregar, baixa direto
+        window.location.href = urlDownload;
+      }
+    });
+  });
+});
