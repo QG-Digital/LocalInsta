@@ -193,7 +193,7 @@ if (btnVerDemo && heroVideoDrop) {
 /* ─── GOOGLE ADS: Rastreamento de Download ─────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   // Seleciona todos os botões que têm o link do seu .exe
-  const botoesDownload = document.querySelectorAll('a[href*="Instalador_LocalInsta_v1.2.8_AnjoCaido.exe"]');
+  const botoesDownload = document.querySelectorAll('a[href*="Instalador_LocalInsta_v1.2.10_AnjoCaido.exe"]');
 
   botoesDownload.forEach(botao => {
     botao.addEventListener('click', function(e) {
