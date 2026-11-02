@@ -250,23 +250,29 @@ h1{font-size:clamp(2.5rem,5.1vw,4.5rem);line-height:.98;margin-bottom:26px}
   .hero-grid,.shot-row,.shot-row-b,.safe-grid,.resp{grid-template-columns:1fr}
   .resp ul{grid-column:1;grid-row:auto}
   .hero-shot{margin-right:0}
-  .day-grid{grid-template-columns:1fr;gap:14px}
-  .day-left{order:2}
-  .day-right{order:1}
-  .day-stick{align-items:flex-start;padding-top:8px}
-  .phone{width:min(210px,56vw);aspect-ratio:auto;height:min(38vh,310px);border-width:7px;border-radius:30px;font-size:9px}
+  /* celular pequeno e flutuante no canto, texto ocupa o resto da tela */
+  .day-grid{--ps:.58;grid-template-columns:1fr;gap:14px;position:relative;padding-right:calc(210px * var(--ps) + 16px)}
+  .day-left{order:1}
+  .day-right{position:absolute;top:2px;right:0;z-index:5;display:block;width:210px;height:310px;pointer-events:none}
+  .day-stick{align-items:center;padding-top:0}
+  .phone{width:210px;aspect-ratio:auto;height:310px;border-width:7px;border-radius:30px;font-size:9px;transform:scale(var(--ps));transform-origin:top right;margin-left:auto;box-shadow:0 26px 40px -14px rgba(4,88,42,.55),0 0 0 1px rgba(11,33,23,.06);animation:phfloat 4.2s ease-in-out infinite}
   .ph-top{margin-top:14px}.ph-bio{display:none}
   .ph-st{gap:4px;justify-content:space-between}.ph-st b{font-size:11px}.ph-st span{font-size:7px;white-space:nowrap}
   .ph-prof{margin:6px 0}.ph-av{width:46px;height:46px}.ph-tray{height:36px;margin-bottom:6px}.ph-tray span{width:34px;height:34px}
   .ph-bio{margin-bottom:6px}
-  .clock{font-size:clamp(3.4rem,17vw,5rem);margin-bottom:10px}
-  .chapters{min-height:11em}
-  .chap h2{font-size:1.35rem}
+  .clock{font-size:clamp(3rem,15vw,4.6rem);margin-bottom:12px}
+  .chapters{min-height:12em}
+  .chap h2{font-size:1.3rem}
   .chap p{font-size:.95rem}
-  .tally{margin-top:8px}
+  .tally{margin-top:10px}
   .shot-row-b .shot{order:-1}
   .scroll-hint{display:none}
 }
+@media (max-width:380px){
+  .day-grid{--ps:.5}
+  .chap h2{font-size:1.18rem}.chap p{font-size:.9rem}
+}
+@keyframes phfloat{0%,100%{transform:scale(var(--ps)) translateY(0)}50%{transform:scale(var(--ps)) translateY(-6px)}}
 @media (max-width:760px){
   .burger{display:block}
   .top-in .btn-sm{display:none}
@@ -283,7 +289,7 @@ h1{font-size:clamp(2.5rem,5.1vw,4.5rem);line-height:.98;margin-bottom:26px}
   .h1l>span,.h1l>em,.lead,.cta-row,.facts,.hero-shot{animation:none;opacity:1;transform:none}
   .mark path{animation:none;stroke-dashoffset:0}
   .rv,.sp .w>span{opacity:1;transform:none;transition:none}
-  .pin,.clock i,.scroll-hint::after{animation:none}
+  .pin,.clock i,.scroll-hint::after,.phone{animation:none}
   .day-track{height:auto}.day-stick{position:static;height:auto;padding:40px 0}
   .chap{position:static;opacity:1;transform:none;margin-bottom:22px}.chapters{min-height:0}
 }
