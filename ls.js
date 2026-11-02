@@ -155,6 +155,19 @@
     setClock(m);
     showChapter(clamp(Math.round(x), 0, N - 1));
     hint.classList.toggle('hint-off', p > 0.03);
+    floatPhone(r, vh);
+  }
+  /* celular flutuante no mobile: fica preso no topo enquanto a seção rola */
+  var dayRight = $('.day-right'), mqMobile = window.matchMedia('(max-width:980px)');
+  function floatPhone(r, vh){
+    if(!dayRight) return;
+    if(!mqMobile.matches || reduce){ dayRight.classList.remove('is-float'); dayRight.style.transform = ''; return; }
+    var ps = parseFloat(getComputedStyle($('.day-grid')).getPropertyValue('--ps')) || .58;
+    var H = 310 * ps, min = 76;
+    var y = Math.min(Math.max(r.top + 10, min), r.bottom - H - 8);
+    var on = r.top < vh - 40 && r.bottom > min + 20;
+    dayRight.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
+    dayRight.classList.toggle('is-float', on);
   }
 
   /* ---------- ritmo: modo em destaque ---------- */
