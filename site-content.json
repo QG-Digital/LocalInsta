@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "identity": {
-    "siteTitle": "LocalInsta — Automação que acompanha sua marca",
-    "description": "Organize mídia, calendário e rotina de publicação no Instagram com o LocalInsta para Windows.",
+    "siteTitle": "LocalInsta — Seu Instagram sempre ativo, sem perder tempo",
+    "description": "O LocalInsta escreve as legendas, escolhe os horários e publica seu Feed e Stories no Instagram, direto do seu computador.",
     "canonicalUrl": "https://qg-digital.github.io/LocalInsta/",
     "socialImage": "https://qg-digital.github.io/LocalInsta/assets/media/localinsta-rebrand-v1210.webp"
   },
@@ -16,95 +16,64 @@
     "conversionSendTo": "AW-18338581824/xcruCLyZod0cEMCawqhE"
   },
   "hero": {
-    "eyebrow": "SOFTWARE LOCAL PARA WINDOWS",
-    "titleBefore": "Sua marca não precisa",
-    "titleAccent": "lembrar",
-    "titleAfter": "de aparecer.",
-    "lead": "O LocalInsta organiza mídia, calendário, contexto de marca e automação em uma rotina que continua enquanto você cuida do seu negócio.",
+    "eyebrow": "PARA QUEM TEM UM NEGÓCIO E POUCO TEMPO",
+    "titleBefore": "Seu Instagram",
+    "titleAccent": "sempre ativo",
+    "titleAfter": ". Sem você perder tempo postando.",
+    "lead": "O LocalInsta escreve as legendas, escolhe os horários e publica seu Feed e Stories direto do seu computador. Enquanto você cuida do negócio, sua conta continua aparecendo para novos clientes.",
     "downloadCta": "Baixar para Windows",
     "demoCta": "Ver demonstração",
     "facts": [
       "FEED & STORY",
-      "FLUXO LOCAL",
-      "3 MOTORES"
+      "LEGENDAS COM IA",
+      "RODA NO SEU PC"
     ]
   },
   "manifesto": {
-    "title": "Uma rotina de conteúdo não precisa ser uma segunda jornada de trabalho.",
-    "text": "Você decide a marca, prepara as mídias e escolhe o ritmo. O LocalInsta transforma essas decisões em uma operação que dá para enxergar."
+    "title": "Cuidar do Instagram não precisa ser uma segunda jornada de trabalho.",
+    "text": "Você conta como é o seu negócio e escolhe a frequência. O LocalInsta cuida do resto e mostra no painel tudo o que foi publicado."
   },
   "demo": {
     "eyebrow": "DEMONSTRAÇÃO DO PAINEL",
-    "title": "Veja a rotina ganhar forma antes de instalar.",
-    "text": "Este é o espaço da demonstração do LocalInsta. O vídeo abaixo está ligado ao seu canal e pode ser trocado depois pelo painel de publicação.",
+    "title": "Veja o LocalInsta funcionando antes de instalar.",
+    "text": "Assista ao programa em uso e entenda, em poucos minutos, como a sua rotina de posts passa a rodar sozinha.",
     "videoId": "KPngpb5FRxw",
-    "label": "PAINEL EM MOVIMENTO"
+    "label": "VEJA NA PRÁTICA"
   },
   "courses": [
     {
       "module": "MÓDULO 01",
       "duration": "12 min",
-      "title": "Primeiros passos e automação",
-      "description": "Configure o LocalInsta, conecte a conta, faça o teste e coloque a primeira rotina em movimento.",
+      "title": "Primeiros passos",
+      "description": "Instale, conecte a sua conta do Instagram, faça um teste e deixe a primeira rotina de posts funcionando.",
       "videoId": "HnNemVCRQhg"
     },
     {
       "module": "MÓDULO 02",
       "duration": "15 min",
-      "title": "Dominando a IA Vision",
-      "description": "Entenda como a inteligência artificial usa o contexto da marca para apoiar legendas e sugestões de conteúdo.",
+      "title": "Como a IA escreve suas legendas",
+      "description": "Veja como o LocalInsta olha a sua foto e escreve a legenda no jeito da sua empresa.",
       "videoId": "KPngpb5FRxw"
     }
   ],
   "responsibleUse": {
-    "title": "Automação pede acompanhamento, decisão e conta bem configurada.",
+    "title": "Publicar com segurança pede acompanhamento e uma conta bem configurada.",
     "text": "O LocalInsta não é produto oficial, afiliado, patrocinado ou endossado pelo Instagram ou pela Meta. Você continua responsável pela conta, pelas mídias, pelo conteúdo publicado e pelas regras que escolhe usar.",
     "notes": [
-      "Faça o primeiro teste na conta correta.",
-      "Revise a mídia e a legenda antes de ativar.",
-      "Nunca envie senha, token, cookie ou 2FA ao suporte."
+      "Faça o primeiro teste na conta certa.",
+      "Confira a imagem e a legenda antes de ligar.",
+      "Nunca envie sua senha ou códigos de verificação para o suporte."
     ]
   },
   "release": {
-    "eyebrow": "VERSÃO ATUAL",
-    "title": "Nova identidade. A mesma automação que acompanha sua rotina.",
-    "text": "Baixe o instalador para Windows, abra o LocalInsta e siga o tutorial de primeira configuração com calma.",
+    "eyebrow": "BAIXE AGORA",
+    "title": "Deixe seu Instagram trabalhando por você.",
+    "text": "Baixe o instalador para Windows, abra o LocalInsta e siga o passo a passo da primeira configuração, com calma.",
     "supportCta": "Falar no WhatsApp"
   },
   "support": {
     "floatingLabel": "Falar com a equipe",
-    "footerDescription": "Uma central desktop para transformar conteúdo, regras e rotina em presença contínua no Instagram."
+    "footerDescription": "Um programa para Windows que mantém o seu Instagram sempre em dia."
   },
-  "textOverrides": {
-    "Cada parte visível.": "Cada parte visível.",
-    "Nenhuma rotina no escuro.": "Nenhuma rotina no escuro.",
-    "O painel foi pensado para você configurar com calma, testar com segurança e acompanhar o que está acontecendo.": "O painel foi pensado para você configurar com calma, testar com segurança e acompanhar o que está acontecendo.",
-    "Marca & IA": "Marca & IA",
-    "Contexto, tom, prompt, hashtags e legendas que partem da sua empresa — não de uma frase genérica.": "Contexto, tom, prompt, hashtags e legendas que partem da sua empresa — não de uma frase genérica.",
-    "Galeria & estoque": "Galeria & estoque",
-    "Separe Feed e Story, acompanhe mídia disponível e deixe claro o que já entrou na rotina.": "Separe Feed e Story, acompanhe mídia disponível e deixe claro o que já entrou na rotina.",
-    "Calendário": "Calendário",
-    "Decisões no tempo certo.": "Decisões no tempo certo.",
-    "Automação": "Automação",
-    "Escolha o motor, teste a conexão e deixe o app acompanhar as janelas de publicação.": "Escolha o motor, teste a conexão e deixe o app acompanhar as janelas de publicação.",
-    "Do seu jeito de trabalhar para uma sequência que não se perde.": "Do seu jeito de trabalhar para uma sequência que não se perde.",
-    "Conta e proteção": "Conta e proteção",
-    "Faça o teste de conexão. As credenciais ficam protegidas no seu computador.": "Faça o teste de conexão. As credenciais ficam protegidas no seu computador.",
-    "Marca e repertório": "Marca e repertório",
-    "Mostre à IA sua empresa e abasteça a galeria com o que faz sentido publicar.": "Mostre à IA sua empresa e abasteça a galeria com o que faz sentido publicar.",
-    "Ritmo e motor": "Ritmo e motor",
-    "Escolha dias, horários e o jeito certo de operar: Aleatório, Calendário ou 100% Auto.": "Escolha dias, horários e o jeito certo de operar: Aleatório, Calendário ou 100% Auto.",
-    "Teste e acompanhamento": "Teste e acompanhamento",
-    "Confirme a conta, veja o robô quando quiser e acompanhe o primeiro ciclo.": "Confirme a conta, veja o robô quando quiser e acompanhe o primeiro ciclo.",
-    "Seu computador continua sendo o centro da sua rotina.": "Seu computador continua sendo o centro da sua rotina.",
-    "O LocalInsta é um aplicativo para Windows. Ele organiza a automação na sua máquina, com uma camada de proteção para as credenciais do Instagram e controles que você consegue revisar.": "O LocalInsta é um aplicativo para Windows. Ele organiza a automação na sua máquina, com uma camada de proteção para as credenciais do Instagram e controles que você consegue revisar.",
-    "Escolha o motor que combina com a sua rotina agora.": "Escolha o motor que combina com a sua rotina agora.",
-    "Automação não é um botão mágico. É uma sequência de decisões boas, feita do jeito que você consegue acompanhar.": "Automação não é um botão mágico. É uma sequência de decisões boas, feita do jeito que você consegue acompanhar.",
-    "Aprenda o processo. Depois escolha o seu ritmo.": "Aprenda o processo. Depois escolha o seu ritmo.",
-    "Vídeos diretos para começar sem ficar procurando tutorial perdido. O conteúdo fica no canal e os módulos acompanham a evolução do produto.": "Vídeos diretos para começar sem ficar procurando tutorial perdido. O conteúdo fica no canal e os módulos acompanham a evolução do produto.",
-    "Mais conteúdo em construção.": "Mais conteúdo em construção.",
-    "LocalInsta para a rotina. Story Feed para o motor.": "LocalInsta para a rotina. Story Feed para o motor.",
-    "Onde você organiza a marca, mídia, calendário, conexão, pagamentos e automação.": "Onde você organiza a marca, mídia, calendário, conexão, pagamentos e automação.",
-    "O processo que acompanha as regras e realiza a publicação configurada para Feed e Story.": "O processo que acompanha as regras e realiza a publicação configurada para Feed e Story."
-  }
+  "textOverrides": {}
 }
