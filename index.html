@@ -1,28 +1,244 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <meta name="description" content="LocalInsta: uma central desktop para organizar conteúdo, calendário e automação de Feed e Story no Instagram." />
-    <meta name="theme-color" content="#031a10" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://qg-digital.github.io/LocalInsta/" />
-    <meta property="og:site_name" content="LocalInsta" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content="LocalInsta — Sua presença digital no ritmo certo" />
-    <meta property="og:description" content="Organize, crie e acompanhe a sua rotina de conteúdo em um só painel desktop." />
-    <meta property="og:image" content="./assets/media/localinsta-rebrand-v1210.webp" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="LocalInsta — Sua presença digital no ritmo certo" />
-    <meta name="twitter:description" content="Organize, crie e acompanhe a sua rotina de conteúdo em um só painel desktop." />
-    <meta name="twitter:image" content="./assets/media/localinsta-rebrand-v1210.webp" />
-    <link rel="canonical" href="https://qg-digital.github.io/LocalInsta/" />
-    <link rel="icon" href="./favicon.ico" sizes="any" />
-    <title>LocalInsta — Sua presença digital no ritmo certo</title>
-    <script type="module" crossorigin src="./assets/index-ChVViF_E.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Snmu7Wa7.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LocalInsta — Seu Instagram sempre ativo, sem perder tempo</title>
+  <meta name="description" content="O LocalInsta escreve as legendas, escolhe os horários e publica seu Feed e Stories no Instagram, direto do seu computador.">
+  <meta name="theme-color" content="#FAFFFE">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://qg-digital.github.io/LocalInsta/">
+  <meta property="og:site_name" content="LocalInsta">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="LocalInsta — Seu Instagram sempre ativo, sem perder tempo">
+  <meta property="og:description" content="Você configura uma vez. O LocalInsta mantém o perfil em dia o mês inteiro.">
+  <meta property="og:image" content="./assets/media/localinsta-rebrand-v1210.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://qg-digital.github.io/LocalInsta/">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="./ls.css">
+</head>
+<body>
+<div class="bar" id="bar"></div>
+
+<!-- barra lateral: onde você está na página -->
+<nav class="rail" id="rail" aria-label="Seções da página">
+  <span class="rail-line"><i id="railFill"></i></span>
+  <a href="#topo" data-s="topo"><b>01</b><span>Início</span></a>
+  <a href="#dia" data-s="dia"><b>02</b><span>Um dia</span></a>
+  <a href="#painel" data-s="painel"><b>03</b><span>O painel</span></a>
+  <a href="#ritmo" data-s="ritmo"><b>04</b><span>Seu ritmo</span></a>
+  <a href="#ver" data-s="ver"><b>05</b><span>Ver na prática</span></a>
+  <a href="#seguro" data-s="seguro"><b>06</b><span>Segurança</span></a>
+  <a href="#baixar" data-s="baixar"><b>07</b><span>Baixar</span></a>
+</nav>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#topo" aria-label="LocalInsta"><img src="./logo.png" width="34" height="34" alt=""><span>Local<b>Insta</b></span></a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#dia">Como funciona</a>
+      <a href="#painel">O painel</a>
+      <a href="#ver">Vídeos</a>
+      <a href="https://vendedores-localinsta.qgdigital.workers.dev" data-link="affiliate">Seja afiliado</a>
+    </nav>
+    <a class="btn btn-solid btn-sm" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download>Baixar</a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<!-- 01 · INÍCIO -->
+<section class="hero" id="topo" data-sec>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker" data-c="hero.eyebrow">PARA QUEM TEM UM NEGÓCIO E POUCO TEMPO</p>
+      <h1>
+        <span class="h1l"><span data-c="hero.titleBefore">Seu Instagram</span></span>
+        <span class="h1l"><em class="mark"><span data-c="hero.titleAccent">sempre ativo</span><svg viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path d="M3 11 C 40 2, 70 16, 110 8 S 190 3, 230 11 S 280 6, 297 9"/></svg></em><span id="h1p">.</span></span>
+        <span class="h1l h1sub"><span id="h1r">Sem você perder tempo postando.</span></span>
+      </h1>
+      <p class="lead" data-c="hero.lead">O LocalInsta escreve as legendas, escolhe os horários e publica seu Feed e Stories direto do seu computador. Enquanto você cuida do negócio, sua conta continua aparecendo para novos clientes.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid btn-lg" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg><span data-c="hero.downloadCta">Baixar para Windows</span></a>
+        <a class="btn btn-line btn-lg" href="#dia"><span>Ver como funciona</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></a>
+      </div>
+      <p class="facts"><span data-c="hero.facts.0">FEED & STORY</span><i></i><span data-c="hero.facts.1">LEGENDAS COM IA</span><i></i><span data-c="hero.facts.2">RODA NO SEU PC</span></p>
+    </div>
+    <figure class="hero-shot" data-par="0.06">
+      <img src="./img/painel.webp" width="1700" height="1155" alt="Painel do LocalInsta mostrando a agenda de hoje com Feed e Stories publicados e os próximos horários">
+      <figcaption>O painel do LocalInsta, no seu computador.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 02 · UM DIA -->
+<section class="day" id="dia" data-sec>
+  <div class="day-track" id="dayTrack">
+    <div class="day-stick">
+      <div class="wrap day-grid">
+        <div class="day-left">
+          <p class="kicker">UM DIA COM O LOCALINSTA</p>
+          <div class="clock" aria-live="polite"><span id="clkH">07</span><i>:</i><span id="clkM">31</span></div>
+          <div class="chapters" id="chapters">
+            <article class="chap is-on" data-t="07:31" data-k="story"><h2>Você ainda está abrindo as portas.</h2><p>O primeiro Story do dia sai sozinho, no horário que você escolheu.</p></article>
+            <article class="chap" data-t="08:42" data-k="feed"><h2>O Feed sai com legenda pronta.</h2><p>A imagem vai para o perfil com o texto que a IA escreveu, no tom da sua marca.</p></article>
+            <article class="chap" data-t="12:40" data-k="story"><h2>Hora do almoço. O salão encheu.</h2><p>Você atende. O Story do meio-dia já foi publicado.</p></article>
+            <article class="chap" data-t="15:22" data-k="story"><h2>Tarde parada? O perfil não.</h2><p>Quem passa pelo seu perfil vê movimento de hoje, não de semana passada.</p></article>
+            <article class="chap" data-t="18:35" data-k="story"><h2>O fim do expediente chegando.</h2><p>Mais um Story no ar, enquanto você fecha o caixa.</p></article>
+            <article class="chap" data-t="21:48" data-k="story"><h2>Você foi descansar. A conta não parou.</h2><p>O último Story do dia sai no horário. Amanhã, de novo, sem você precisar lembrar.</p></article>
+          </div>
+          <p class="tally"><b id="tF">0</b> Feed · <b id="tS">0</b> Stories · <b>0</b> minutos seus</p>
+        </div>
+
+        <div class="day-right" aria-hidden="true">
+          <div class="phone">
+            <div class="ph-top"><span>cafeaurora</span><small>Exemplo ilustrativo</small></div>
+            <div class="ph-prof">
+              <div class="ph-av"><img src="./logo.png" alt="" width="64" height="64"></div>
+              <div class="ph-st"><div><b id="phPosts">24</b><span>posts</span></div><div><b>1.284</b><span>seguidores</span></div><div><b>312</b><span>seguindo</span></div></div>
+            </div>
+            <p class="ph-bio"><b>Café Aurora</b><br>O café que abre o seu dia.</p>
+            <div class="ph-tray" id="tray"></div>
+            <div class="ph-grid" id="grid">
+              <span class="tile t-new"><em>Café<br>fresquinho<br>às 8h</em></span>
+              <span class="tile a"><em>Bolo do dia</em></span>
+              <span class="tile b"><em>Combo<br>almoço</em></span>
+              <span class="tile c"></span><span class="tile d"><em>Aberto<br>até 20h</em></span><span class="tile e"></span>
+              <span class="tile f"><em>Obrigado, vizinhança</em></span><span class="tile g"></span><span class="tile h"><em>Pão de queijo</em></span>
+            </div>
+            <div class="toast" id="toast"><i></i><span id="toastT">Story publicado</span><b id="toastH">07:31</b></div>
+          </div>
+        </div>
+      </div>
+      <p class="scroll-hint" id="hint">Role para ver o dia passar</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · PAINEL -->
+<section class="panel" id="painel" data-sec>
+  <div class="wrap">
+    <h2 class="big sp">Você enxerga tudo, sem abrir o Instagram.</h2>
+    <div class="shot-row">
+      <figure class="shot shot-a rv" data-par="0.04">
+        <img src="./img/painel.webp" width="1700" height="1155" alt="Tela de Automação do LocalInsta" loading="lazy">
+        <i class="pin" style="left:96.5%;top:31%">1</i><i class="pin" style="left:46%;top:26.5%">2</i>
+      </figure>
+      <div class="shot-copy rv">
+        <h3>O que saiu, o que vem a seguir</h3>
+        <p><b class="num">1</b>A agenda de hoje mostra cada horário já sorteado e o que foi publicado.</p>
+        <p><b class="num">2</b>Escolha como ele trabalha: aleatório, pelo calendário ou 100% automático.</p>
+      </div>
+    </div>
+    <div class="shot-row shot-row-b">
+      <div class="shot-copy rv">
+        <h3>Conte sobre o seu negócio uma vez só</h3>
+        <p>Nome, produto e jeito de falar. A IA usa isso para escrever legendas que parecem suas, não de um robô.</p>
+        <p class="muted">Ou cole um texto sobre a empresa e deixe o app preencher o resto para você revisar.</p>
+      </div>
+      <figure class="shot shot-b rv" data-par="0.04">
+        <img src="./img/marca.webp" width="1500" height="611" alt="Tela Marca e IA do LocalInsta com nome, slogan, missão e produto" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · RITMO -->
+<section class="rhythm" id="ritmo" data-sec>
+  <div class="wrap">
+    <p class="kicker">ESCOLHA O SEU RITMO</p>
+    <h2 class="big sp">Três jeitos de trabalhar. Troque quando quiser.</h2>
+    <ol class="modes" id="modes">
+      <li class="mode is-on"><span class="mn">01</span><div><h3>Aleatório</h3><p>Os horários são sorteados dentro das janelas que você define, como uma pessoa faria. Nada de postar sempre às 10h em ponto.</p></div></li>
+      <li class="mode"><span class="mn">02</span><div><h3>Calendário</h3><p>Você marca o dia e o que vai no ar, inclusive datas especiais como Dia das Mães e Natal. Ele cumpre.</p></div></li>
+      <li class="mode"><span class="mn">03</span><div><h3>100% Auto</h3><p>Ele também cria as imagens com IA, todas diferentes, nas cores da sua marca, e publica. Você só acompanha.</p></div></li>
+    </ol>
+    <ul class="also">
+      <li>Legendas e hashtags no seu tom</li><li>Galeria de Feed e Stories com estoque</li><li>Criador de imagens em lote</li><li>Painel com tudo o que foi publicado</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 05 · VER NA PRÁTICA -->
+<section class="watch" id="ver" data-sec>
+  <div class="wrap">
+    <div class="watch-head">
+      <p class="kicker" data-c="demo.eyebrow">DEMONSTRAÇÃO DO PAINEL</p>
+      <h2 class="big sp" data-c="demo.title">Veja o LocalInsta funcionando antes de instalar.</h2>
+      <p class="sub" data-c="demo.text">Assista ao painel em uso e entenda, em poucos minutos, como a sua rotina de posts passa a rodar sozinha.</p>
+    </div>
+    <div class="video video-main rv" id="demoVideo" data-video="KPngpb5FRxw"><button class="video-play" type="button" aria-label="Reproduzir vídeo de demonstração"><span><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+
+    <h3 class="mini-title">Mini-cursos</h3>
+    <div class="courses" id="courses">
+      <article class="course rv" data-i="0">
+        <div class="video video-sm" data-video="HnNemVCRQhg"><button class="video-play" type="button" aria-label="Reproduzir mini-curso"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+        <div><small><span data-f="module">MÓDULO 01</span> · <span data-f="duration">12 min</span></small><h4 data-f="title">Primeiros passos</h4><p data-f="description">Configure o LocalInsta, conecte a conta, faça o teste e coloque a primeira rotina em movimento.</p></div>
+      </article>
+      <article class="course rv" data-i="1">
+        <div class="video video-sm" data-video="KPngpb5FRxw"><button class="video-play" type="button" aria-label="Reproduzir mini-curso"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+        <div><small><span data-f="module">MÓDULO 02</span> · <span data-f="duration">15 min</span></small><h4 data-f="title">Dominando a IA Vision</h4><p data-f="description">Entenda como a inteligência artificial usa o contexto da marca para apoiar legendas e sugestões de conteúdo.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · SEGURANÇA -->
+<section class="safe" id="seguro" data-sec>
+  <div class="wrap safe-grid">
+    <div>
+      <p class="kicker kicker-l">SEU COMPUTADOR, SUA CONTA</p>
+      <h2 class="big sp">Tudo roda no seu Windows, com você no controle.</h2>
+    </div>
+    <ul class="safe-list">
+      <li><b>01</b><span>Seus dados de acesso ficam protegidos no seu computador, não em um servidor de terceiros.</span></li>
+      <li><b>02</b><span>Você escolhe dias, horários e conteúdo antes de ligar.</span></li>
+      <li><b>03</b><span>O painel registra tudo o que foi publicado, e você pausa quando quiser.</span></li>
+    </ul>
+    <div class="resp rv">
+      <h3 data-c="responsibleUse.title">Publicar com segurança pede acompanhamento e uma conta bem configurada.</h3>
+      <p data-c="responsibleUse.text">O LocalInsta não é produto oficial, afiliado, patrocinado ou endossado pelo Instagram ou pela Meta. Você continua responsável pela conta, pelas mídias, pelo conteúdo publicado e pelas regras que escolhe usar.</p>
+      <ul><li data-c="responsibleUse.notes.0">Faça o primeiro teste na conta correta.</li><li data-c="responsibleUse.notes.1">Revise a mídia e a legenda antes de ativar.</li><li data-c="responsibleUse.notes.2">Nunca envie senha, token, cookie ou 2FA ao suporte.</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · BAIXAR -->
+<section class="get" id="baixar" data-sec>
+  <div class="wrap get-in">
+    <img src="./logo.png" width="76" height="76" alt="" class="get-logo">
+    <h2 class="huge sp" data-c="release.title">Deixe seu Instagram trabalhando por você.</h2>
+    <p data-c="release.text">Baixe o instalador para Windows, abra o LocalInsta e siga o tutorial de primeira configuração com calma.</p>
+    <div class="cta-row cta-c">
+      <a class="btn btn-white btn-lg" id="downloadMain" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>Baixar para Windows</a>
+      <a class="btn btn-ghost-w btn-lg" href="https://wa.me/5543996975141" data-link="whatsapp" data-wa target="_blank" rel="noopener"><span data-c="release.supportCta">Falar no WhatsApp</span></a>
+    </div>
+    <small id="versionNote"></small>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand"><img src="./logo.png" width="30" height="30" alt=""><div><b>LocalInsta</b><span data-c="support.footerDescription">Uma central desktop para transformar conteúdo, regras e rotina em presença contínua no Instagram.</span></div></div>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/app.localinsta/" data-link="instagram" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://github.com/QG-Digital/LocalInsta" data-link="github" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://wa.me/5543996975141" data-link="whatsapp" data-wa target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://vendedores-localinsta.qgdigital.workers.dev" data-link="affiliate">Seja afiliado</a>
+    </div>
+    <p class="legal">LocalInsta não é produto oficial, afiliado, patrocinado ou endossado pelo Instagram ou pela Meta.</p>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5543996975141" data-link="whatsapp" data-wa target="_blank" rel="noopener" aria-label="Falar com a equipe">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-12.2 7.5L3 20.5l1.6-5.4A8.4 8.4 0 1121 11.5z"/></svg>
+  <span data-c="support.floatingLabel">Falar com a equipe</span>
+</a>
+<script src="./ls.js"></script>
+</body>
 </html>
