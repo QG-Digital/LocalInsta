@@ -104,7 +104,7 @@ h1{font-size:clamp(2.5rem,5.1vw,4.5rem);line-height:.98;margin-bottom:26px}
 .day-track{height:560vh;position:relative}
 .day-stick{position:sticky;top:66px;height:calc(100vh - 66px);height:calc(100svh - 66px);display:flex;align-items:center}
 .day-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,5vw,80px);align-items:center;width:min(1180px,100% - 44px)}
-.clock{font:800 clamp(4.4rem,11vw,9rem)/.9 var(--disp);letter-spacing:-.05em;color:var(--deep);display:flex;margin-bottom:26px;font-variant-numeric:tabular-nums}
+.clock{font:800 clamp(3.6rem,min(11vw,17vh),9rem)/.9 var(--disp);letter-spacing:-.05em;color:var(--deep);display:flex;margin-bottom:26px;font-variant-numeric:tabular-nums}
 .clock i{font-style:normal;color:var(--em);animation:blink 1.4s steps(2) infinite;margin:0 .04em}
 @keyframes blink{50%{opacity:.25}}
 .chapters{position:relative;min-height:9.4em}
@@ -120,7 +120,8 @@ h1{font-size:clamp(2.5rem,5.1vw,4.5rem);line-height:.98;margin-bottom:26px}
 .hint-off{opacity:0}
 
 /* celular */
-.day-right{display:flex;justify-content:center}
+.day-right{display:flex;justify-content:center;align-items:flex-start}
+.phone{transform-origin:top center;flex:none}
 .phone{position:relative;width:min(300px,100%);aspect-ratio:9/18.4;background:#fff;border:9px solid var(--ink);border-radius:38px;box-shadow:0 40px 70px -30px rgba(4,88,42,.45);padding:14px 14px 0;overflow:hidden;font-size:11px;line-height:1.35}
 .phone::before{content:"";position:absolute;top:7px;left:50%;width:70px;height:16px;border-radius:12px;background:var(--ink);transform:translateX(-50%);z-index:3}
 .ph-top{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;font-weight:700;font-size:13px}
@@ -250,30 +251,23 @@ h1{font-size:clamp(2.5rem,5.1vw,4.5rem);line-height:.98;margin-bottom:26px}
   .hero-grid,.shot-row,.shot-row-b,.safe-grid,.resp{grid-template-columns:1fr}
   .resp ul{grid-column:1;grid-row:auto}
   .hero-shot{margin-right:0}
-  /* celular pequeno e flutuante no canto, texto ocupa o resto da tela */
-  .day-grid{--ps:.58;grid-template-columns:1fr;gap:14px;position:relative;padding-right:calc(210px * var(--ps) + 16px)}
-  .day-left{order:1}
-  .day-right{position:fixed;top:0;right:22px;z-index:50;display:block;width:210px;height:310px;pointer-events:none;visibility:hidden;opacity:0;transition:opacity .3s;will-change:transform}
-  .day-right.is-float{visibility:visible;opacity:1}
-  .day-stick{align-items:center;padding-top:0}
-  .phone{width:210px;aspect-ratio:auto;height:310px;border-width:7px;border-radius:30px;font-size:9px;transform:scale(var(--ps));transform-origin:top right;margin-left:auto;box-shadow:0 26px 40px -14px rgba(4,88,42,.55),0 0 0 1px rgba(11,33,23,.06);animation:phfloat 4.2s ease-in-out infinite}
-  .ph-top{margin-top:14px}.ph-bio{display:none}
-  .ph-st{gap:4px;justify-content:space-between}.ph-st b{font-size:11px}.ph-st span{font-size:7px;white-space:nowrap}
-  .ph-prof{margin:6px 0}.ph-av{width:46px;height:46px}.ph-tray{height:36px;margin-bottom:6px}.ph-tray span{width:34px;height:34px}
-  .ph-bio{margin-bottom:6px}
-  .clock{font-size:clamp(3rem,15vw,4.6rem);margin-bottom:12px}
-  .chapters{min-height:12em}
-  .chap h2{font-size:1.3rem}
-  .chap p{font-size:.95rem}
-  .tally{margin-top:10px}
+  /* celular: relógio e texto em cima, celular grande embaixo, tudo preso na tela enquanto rola.
+     O tamanho do celular é ajustado pelo ls.js (fitPhone) para caber no espaço que sobra. */
+  .day-stick{align-items:stretch}
+  .day-grid{grid-template-columns:1fr;gap:10px;align-content:center;padding:10px 0}
+  .day-left{order:1}.day-right{order:2}
+  .day .kicker{margin-bottom:4px;font-size:.68rem}
+  .clock{font-size:clamp(2.4rem,min(13vw,8vh),4.2rem);margin-bottom:6px}
+  .chapters{min-height:6.6em}
+  .chap h2{font-size:1.12rem;margin-bottom:4px}
+  .chap p{font-size:.88rem;line-height:1.45}
+  .tally{display:none}
   .shot-row-b .shot{order:-1}
   .scroll-hint{display:none}
 }
 @media (max-width:380px){
-  .day-grid{--ps:.5}
-  .chap h2{font-size:1.18rem}.chap p{font-size:.9rem}
+  .chap h2{font-size:1.04rem}.chap p{font-size:.84rem}
 }
-@keyframes phfloat{0%,100%{transform:scale(var(--ps)) translateY(0)}50%{transform:scale(var(--ps)) translateY(-6px)}}
 @media (max-width:760px){
   .burger{display:block}
   .top-in .btn-sm{display:none}
@@ -291,7 +285,8 @@ h1{font-size:clamp(2.5rem,5.1vw,4.5rem);line-height:.98;margin-bottom:26px}
   .mark path{animation:none;stroke-dashoffset:0}
   .rv,.sp .w>span{opacity:1;transform:none;transition:none}
   .pin,.clock i,.scroll-hint::after,.phone{animation:none}
-  .day-right{position:absolute;top:2px;right:0;transform:none!important;visibility:visible;opacity:1}
-  .day-track{height:auto}.day-stick{position:static;height:auto;padding:40px 0}
-  .chap{position:static;opacity:1;transform:none;margin-bottom:22px}.chapters{min-height:0}
+  /* "um dia": continua preso na tela e acompanhando a rolagem (é a pessoa que rola);
+     só tira as transições automáticas */
+  .chap{transition:none;transform:none}
+  .day-right{transition:none}
 }

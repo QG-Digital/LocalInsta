@@ -157,18 +157,25 @@
     hint.classList.toggle('hint-off', p > 0.03);
     floatPhone(r, vh);
   }
-  /* celular flutuante no mobile: fica preso no topo enquanto a seção rola */
-  var dayRight = $('.day-right'), mqMobile = window.matchMedia('(max-width:980px)');
-  function floatPhone(r, vh){
-    if(!dayRight) return;
-    if(!mqMobile.matches || reduce){ dayRight.classList.remove('is-float'); dayRight.style.transform = ''; return; }
-    var ps = parseFloat(getComputedStyle($('.day-grid')).getPropertyValue('--ps')) || .58;
-    var H = 310 * ps, min = 76;
-    var y = Math.min(Math.max(r.top + 10, min), r.bottom - H - 8);
-    var on = r.top < vh - 40 && r.bottom > min + 20;
-    dayRight.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
-    dayRight.classList.toggle('is-float', on);
+  /* celular do tamanho certo: encolhe para caber na altura da tela (notebook pequeno e Android) */
+  var dayRight = $('.day-right'), dayLeft = $('.day-left'), daySt = $('.day-stick'), phoneEl = $('.phone'), mqMobile = window.matchMedia('(max-width:980px)');
+  function fitPhone(){
+    if(!phoneEl || !daySt) return;
+    phoneEl.style.transform = ''; dayRight.style.height = '';
+    var nat = phoneEl.offsetHeight, natW = phoneEl.offsetWidth; if(!nat) return;
+    var stH = daySt.clientHeight, avail;
+    if(mqMobile.matches){ avail = stH - dayLeft.offsetHeight - 10 - 24; }
+    else { avail = stH - 36; }
+    var s = Math.max(.42, Math.min(1, avail / nat));
+    phoneEl.style.transform = s < 1 ? 'scale(' + s.toFixed(3) + ')' : '';
+    dayRight.style.height = Math.round(nat * s) + 'px';
+    if(mqMobile.matches) dayRight.style.width = '100%';
   }
+  function floatPhone(){}
+  window.addEventListener('resize', fitPhone);
+  window.addEventListener('load', fitPhone);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitPhone);
+  setTimeout(fitPhone, 60);
 
   /* ---------- ritmo: modo em destaque ---------- */
   var modes = $$('.mode');
