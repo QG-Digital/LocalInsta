@@ -3,8 +3,8 @@
   "identity": {
     "siteTitle": "LocalInsta — Seu Instagram sempre ativo, sem perder tempo",
     "description": "O LocalInsta escreve as legendas, escolhe os horários e publica seu Feed e Stories no Instagram, direto do seu computador.",
-    "canonicalUrl": "https://qg-digital.github.io/LocalInsta/",
-    "socialImage": "https://qg-digital.github.io/LocalInsta/assets/media/localinsta-rebrand-v1210.webp"
+    "canonicalUrl": "https://localinsta.com.br/",
+    "socialImage": "https://localinsta.com.br/assets/media/localinsta-rebrand-v1210.webp"
   },
   "links": {
     "whatsapp": "https://wa.me/5543996975141?text=Ol%C3%A1%2C%20quero%20tirar%20uma%20d%C3%BAvida%20sobre%20o%20LocalInsta.",
@@ -26,7 +26,8 @@
     "facts": [
       "FEED & STORY",
       "LEGENDAS COM IA",
-      "RODA NO SEU PC"
+      "RODA NO SEU PC",
+      "30 DIAS GRÁTIS"
     ]
   },
   "manifesto": {
@@ -68,7 +69,7 @@
   "release": {
     "eyebrow": "BAIXE AGORA",
     "title": "Deixe seu Instagram trabalhando por você.",
-    "text": "Baixe o instalador para Windows, abra o LocalInsta e siga o passo a passo da primeira configuração, com calma.",
+    "text": "Teste grátis por 30 dias. Baixe o instalador para Windows, abra o LocalInsta e siga o passo a passo da primeira configuração, com calma.",
     "supportCta": "Falar no WhatsApp"
   },
   "support": {

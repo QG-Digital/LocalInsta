@@ -53,7 +53,7 @@
   function conversion(){ try{ if(window.gtag && convId) window.gtag('event','conversion',{send_to: convId, value: 1, currency: 'BRL'}); }catch(e){} }
   document.addEventListener('click', function(e){
     var a = e.target.closest('a'); if(!a) return;
-    if(a.hasAttribute('data-download') || a.hasAttribute('data-wa')) conversion();
+    if(a.hasAttribute('data-download-real') || a.hasAttribute('data-wa')) conversion();
   });
 
   /* ---------- download ---------- */
