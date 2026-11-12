@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LocalInsta — Seu Instagram sempre ativo, sem perder tempo</title>
   <meta name="description" content="O LocalInsta escreve as legendas, escolhe os horários e publica seu Feed e Stories no Instagram, direto do seu computador.">
-  <meta name="theme-color" content="#FAFFFE">
+  <meta name="theme-color" content="#FBFDF9">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://localinsta.com.br/">
   <meta property="og:site_name" content="LocalInsta">
@@ -25,31 +25,18 @@
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="./ls.css?v=20261108b">
-  <link rel="stylesheet" href="./ls2.css?v=20261108b">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gabarito:wght@500;700;800;900&display=swap">
+  <link rel="stylesheet" href="./ls.css?v=20261112a">
+  <link rel="stylesheet" href="./ls2.css?v=20261112a">
+  <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"LocalInsta","url":"https://localinsta.com.br/","applicationCategory":"BusinessApplication","operatingSystem":"Windows 10, Windows 11","description":"Programa para Windows que escreve legendas com IA, escolhe horários e publica Feed e Stories no Instagram. Teste grátis por 30 dias.","image":"https://localinsta.com.br/assets/media/localinsta-rebrand-v1210.webp","inLanguage":"pt-BR","publisher":{"@type":"Organization","name":"QG Digital","url":"https://localinsta.com.br/","sameAs":["https://www.instagram.com/app.localinsta/","https://github.com/QG-Digital/LocalInsta"]}}
   </script>
 </head>
 <body>
-<div class="bar" id="bar"></div>
+<a class="skip" href="#dia">Pular para o conteúdo</a>
 
-<!-- barra lateral: onde você está na página -->
-<nav class="rail" id="rail" aria-label="Seções da página">
-  <span class="rail-line"><i id="railFill"></i></span>
-  <a href="#topo" data-s="topo"><b>01</b><span>Início</span></a>
-  <a href="#dia" data-s="dia"><b>02</b><span>Um dia</span></a>
-  <a href="#painel" data-s="painel"><b>03</b><span>O painel</span></a>
-  <a href="#ritmo" data-s="ritmo"><b>04</b><span>Seu ritmo</span></a>
-  <a href="#ver" data-s="ver"><b>05</b><span>Ver na prática</span></a>
-  <a href="#seguro" data-s="seguro"><b>06</b><span>Segurança</span></a>
-  <a href="#preco" data-s="preco"><b>07</b><span>Preço</span></a>
-  <a href="#duvidas" data-s="duvidas"><b>08</b><span>Dúvidas</span></a>
-  <a href="#baixar" data-s="baixar"><b>09</b><span>Baixar</span></a>
-</nav>
-
-<header class="top">
+<header class="top" id="top">
   <div class="wrap top-in">
     <a class="brand" href="#topo" aria-label="LocalInsta"><img src="./logo.png" width="34" height="34" alt=""><span>Local<b>Insta</b></span></a>
     <nav class="nav" id="nav" aria-label="Principal">
@@ -66,41 +53,43 @@
 </header>
 
 <main>
-<!-- 01 · INÍCIO -->
+<!-- INÍCIO -->
 <section class="hero" id="topo" data-sec>
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="kicker" data-c="hero.eyebrow">PARA QUEM TEM UM NEGÓCIO E POUCO TEMPO</p>
-      <h1>
-        <span class="h1l"><span data-c="hero.titleBefore">Seu Instagram</span></span>
-        <span class="h1l"><em class="mark"><span data-c="hero.titleAccent">sempre ativo</span><svg viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path d="M3 11 C 40 2, 70 16, 110 8 S 190 3, 230 11 S 280 6, 297 9"/></svg></em><span id="h1p">.</span></span>
-        <span class="h1l h1sub"><span id="h1r">Sem você perder tempo postando.</span></span>
-      </h1>
+  <div class="wrap">
+    <h1>
+      <span class="h1l"><span class="h1i"><span data-c="hero.titleBefore">Seu Instagram</span> <span data-c="hero.titleAccent">sempre ativo</span><span id="h1p">.</span></span></span>
+      <span class="h1l h1sub"><span class="h1i"><span id="h1r">Sem você perder tempo postando.</span></span></span>
+    </h1>
+    <div class="hero-sub">
       <p class="lead" data-c="hero.lead">O LocalInsta escreve as legendas, escolhe os horários e publica seu Feed e Stories direto do seu computador. Enquanto você cuida do negócio, sua conta continua aparecendo para novos clientes.</p>
-      <div class="cta-row">
-        <a class="btn btn-solid btn-lg" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg><span data-c="hero.downloadCta">Baixar para Windows</span></a>
-        <a class="btn btn-line btn-lg" href="#dia"><span>Ver como funciona</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></a>
+      <div class="hero-act">
+        <div class="cta-row">
+          <a class="btn btn-solid btn-lg" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg><span data-c="hero.downloadCta">Baixar para Windows</span></a>
+          <a class="btn btn-line btn-lg" href="#dia">Ver como funciona</a>
+        </div>
+        <p class="hero-note">30 dias grátis, sem cartão. Para Windows 10 e 11.</p>
       </div>
-      <p class="facts"><span data-c="hero.facts.0">FEED & STORY</span><i></i><span data-c="hero.facts.1">LEGENDAS COM IA</span><i></i><span data-c="hero.facts.2">RODA NO SEU PC</span><i></i><span data-c="hero.facts.3">30 DIAS GRÁTIS</span></p>
     </div>
-    <figure class="hero-shot" data-par="0.06">
+  </div>
+  <div class="wrap win-wrap">
+    <figure class="win" id="heroWin">
+      <div class="win-bar" aria-hidden="true"><img src="./logo.png" width="16" height="16" alt=""><span>LocalInsta</span><i class="win-ctl"><b></b><b></b><b></b></i></div>
       <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="./assets/media/localinsta-tour-tela.jpg" width="1280" height="800" aria-label="Tour pela tela real do LocalInsta: agenda do dia, estoque de posts, marca e IA, datas especiais">
         <source src="./assets/media/localinsta-tour-tela.mp4" type="video/mp4">
       </video>
-      <span class="live"><i></i>TELA REAL DO APP</span>
-      <figcaption>O LocalInsta de verdade, rodando no computador.</figcaption>
+      <figcaption>Tela real do LocalInsta, gravada em um computador comum.</figcaption>
     </figure>
   </div>
 </section>
 
-<!-- 02 · UM DIA -->
+<!-- UM DIA -->
 <section class="day" id="dia" data-sec>
   <div class="day-track" id="dayTrack">
     <div class="day-stick">
       <div class="wrap day-grid">
         <div class="day-left">
-          <p class="kicker">UM DIA COM O LOCALINSTA</p>
-          <div class="clock" aria-live="polite"><span id="clkH">07</span><i>:</i><span id="clkM">31</span></div>
+          <p class="day-label">Um dia com o LocalInsta</p>
+          <div class="clock" aria-live="off"><span id="clkH">07</span><i>:</i><span id="clkM">31</span></div>
           <div class="chapters" id="chapters">
             <article class="chap is-on" data-t="07:31" data-k="story"><h2>Você ainda está abrindo as portas.</h2><p>O primeiro Story do dia sai sozinho, no horário que você escolheu.</p></article>
             <article class="chap" data-t="08:42" data-k="feed"><h2>O Feed sai com legenda pronta.</h2><p>A imagem vai para o perfil com o texto que a IA escreveu, no tom da sua marca.</p></article>
@@ -109,7 +98,7 @@
             <article class="chap" data-t="18:35" data-k="story"><h2>O fim do expediente chegando.</h2><p>Mais um Story no ar, enquanto você fecha o caixa.</p></article>
             <article class="chap" data-t="21:48" data-k="story"><h2>Você foi descansar. A conta não parou.</h2><p>O último Story do dia sai no horário. Amanhã, de novo, sem você precisar lembrar.</p></article>
           </div>
-          <p class="tally"><b id="tF">0</b> Feed · <b id="tS">0</b> Stories · <b>0</b> minutos seus</p>
+          <p class="tally"><span><b id="tF">0</b> no Feed</span><span><b id="tS">0</b> Stories</span><span><b>0</b> minutos seus</span></p>
         </div>
 
         <div class="day-right" aria-hidden="true">
@@ -132,49 +121,69 @@
           </div>
         </div>
       </div>
-      <p class="scroll-hint" id="hint">Role para ver o dia passar</p>
+      <div class="wrap dayline" id="dayline" aria-hidden="true"><span class="dl-track"><i id="dlFill"></i></span></div>
     </div>
   </div>
 </section>
 
-<!-- 03 · PAINEL -->
+<!-- PAINEL -->
 <section class="panel" id="painel" data-sec>
   <div class="wrap">
-    <h2 class="big sp">Você enxerga tudo, sem abrir o Instagram.</h2>
+    <h2 class="big" data-rv>Você enxerga tudo, sem abrir o Instagram.</h2>
     <div class="shot-row">
-      <figure class="shot shot-a rv" data-par="0.04">
+      <figure class="shot" data-rv>
         <img src="./img/painel.webp" width="1700" height="1155" alt="Tela de Automação do LocalInsta" loading="lazy">
         <i class="pin" style="left:96.5%;top:31%">1</i><i class="pin" style="left:46%;top:26.5%">2</i>
       </figure>
-      <div class="shot-copy rv">
+      <div class="shot-copy" data-rv>
         <h3>O que saiu, o que vem a seguir</h3>
         <p><b class="num">1</b>A agenda de hoje mostra cada horário já sorteado e o que foi publicado.</p>
         <p><b class="num">2</b>Escolha como ele trabalha: aleatório, pelo calendário ou 100% automático.</p>
       </div>
     </div>
     <div class="shot-row shot-row-b">
-      <div class="shot-copy rv">
+      <div class="shot-copy" data-rv>
         <h3>Conte sobre o seu negócio uma vez só</h3>
         <p>Nome, produto e jeito de falar. A IA usa isso para escrever legendas que parecem suas, não de um robô.</p>
         <p class="muted">Ou cole um texto sobre a empresa e deixe o app preencher o resto para você revisar.</p>
       </div>
-      <figure class="shot shot-b rv" data-par="0.04">
+      <figure class="shot" data-rv>
         <img src="./img/marca.webp" width="1500" height="611" alt="Tela Marca e IA do LocalInsta com nome, slogan, missão e produto" loading="lazy">
       </figure>
     </div>
   </div>
 </section>
 
-<!-- 04 · RITMO -->
+<!-- RITMO -->
 <section class="rhythm" id="ritmo" data-sec>
   <div class="wrap">
-    <p class="kicker">ESCOLHA O SEU RITMO</p>
-    <h2 class="big sp">Três jeitos de trabalhar. Troque quando quiser.</h2>
-    <ol class="modes" id="modes">
-      <li class="mode is-on"><span class="mn">01</span><div><h3>Aleatório</h3><p>Os horários são sorteados dentro das janelas que você define, como uma pessoa faria. Nada de postar sempre às 10h em ponto.</p></div></li>
-      <li class="mode"><span class="mn">02</span><div><h3>Calendário</h3><p>Você marca o dia e o que vai no ar, inclusive datas especiais como Dia das Mães e Natal. Ele cumpre.</p></div></li>
-      <li class="mode"><span class="mn">03</span><div><h3>100% Auto</h3><p>Ele também cria as imagens com IA, todas diferentes, nas cores da sua marca, e publica. Você só acompanha.</p></div></li>
-    </ol>
+    <h2 class="big" data-rv>Três jeitos de trabalhar. Troque quando quiser.</h2>
+    <div class="modes" id="modes">
+      <div class="mode-list" role="tablist" aria-label="Modos de publicação">
+        <button class="mode is-on" type="button" role="tab" aria-selected="true" aria-controls="mv0" id="mt0"><span class="mode-t">Aleatório</span><span class="mode-d"><span>Os horários são sorteados dentro das janelas que você define, como uma pessoa faria. Nada de postar sempre às 10h em ponto.</span></span><i class="mode-bar"></i></button>
+        <button class="mode" type="button" role="tab" aria-selected="false" aria-controls="mv1" id="mt1"><span class="mode-t">Calendário</span><span class="mode-d"><span>Você marca o dia e o que vai no ar, inclusive datas especiais como Dia das Mães e Natal. Ele cumpre.</span></span><i class="mode-bar"></i></button>
+        <button class="mode" type="button" role="tab" aria-selected="false" aria-controls="mv2" id="mt2"><span class="mode-t">100% Auto</span><span class="mode-d"><span>Ele também cria as imagens com IA, todas diferentes, nas cores da sua marca, e publica. Você só acompanha.</span></span><i class="mode-bar"></i></button>
+      </div>
+      <div class="mode-stage">
+        <div class="mv mv-rand is-on" id="mv0" role="tabpanel" aria-labelledby="mt0">
+          <p class="mv-cap">Cada dia, horários diferentes dentro das suas janelas.</p>
+          <div class="week" id="week"></div>
+          <div class="week-axis"><span>7h</span><span>12h</span><span>17h</span><span>22h</span></div>
+        </div>
+        <div class="mv mv-cal" id="mv1" role="tabpanel" aria-labelledby="mt1" hidden>
+          <p class="mv-cap">Você decide o dia. Ele publica na data.</p>
+          <div class="cal" id="cal"></div>
+          <ul class="cal-key"><li><i class="k1"></i>Dia das Mães</li><li><i class="k2"></i>Promoção de sexta</li><li><i class="k3"></i>Aniversário da loja</li></ul>
+        </div>
+        <div class="mv mv-auto" id="mv2" role="tabpanel" aria-labelledby="mt2" hidden>
+          <p class="mv-cap">Imagens criadas com IA, nas cores da sua marca.</p>
+          <div class="gen" id="gen">
+            <span class="tile a"><em>Bolo do dia</em></span><span class="tile d"><em>Aberto<br>até 20h</em></span><span class="tile b"><em>Combo<br>almoço</em></span>
+            <span class="tile f"><em>Obrigado, vizinhança</em></span><span class="tile t-gen"><em>Café<br>fresquinho</em></span><span class="tile h"><em>Pão de queijo</em></span>
+          </div>
+        </div>
+      </div>
+    </div>
     <ul class="also">
       <li>Legendas e hashtags no seu tom</li><li>Galeria de Feed e Stories com estoque</li><li>Criador de imagens em lote</li><li>Painel com tudo o que foi publicado</li>
     </ul>
@@ -184,115 +193,114 @@
 <!-- NICHOS -->
 <section class="niches" id="nichos">
   <div class="wrap">
-    <p class="kicker">FEITO PARA O SEU NEGÓCIO</p>
-    <h2 class="big sp">Do salão ao restaurante, o perfil não para.</h2>
+    <h2 class="big" data-rv>Do salão ao restaurante, o perfil não para.</h2>
     <div class="niche-grid">
-      <a class="niche g-up" href="./salao.html"><span class="ico" style="background:linear-gradient(135deg,#EC4899,#F97316)">S</span><h3>Salões e estética</h3><p>Antes e depois, horários livres e promoções da semana saindo sozinhos enquanto você atende.</p><span class="go">Ver como fica</span></a>
-      <a class="niche g-up" href="./restaurante.html"><span class="ico" style="background:linear-gradient(135deg,#F59E0B,#DC2626)">R</span><h3>Restaurantes e lanchonetes</h3><p>Prato do dia, cardápio e combo do almoço no ar antes da fome bater.</p><span class="go">Ver como fica</span></a>
-      <a class="niche g-up" href="./pet.html"><span class="ico" style="background:linear-gradient(135deg,#0EA5E9,#10B981)">P</span><h3>Pet shops e clínicas</h3><p>Banho e tosa, vacinas e novidades da loja aparecendo para quem mora perto.</p><span class="go">Ver como fica</span></a>
+      <a class="niche n-salao" href="./salao.html" data-rv>
+        <span class="strip" aria-hidden="true"><i><em>Antes<br>&amp; depois</em></i><i><em>Horários<br>livres hoje</em></i><i><em>Unhas da<br>semana</em></i></span>
+        <h3>Salões e estética</h3><p>Antes e depois, horários livres e promoções da semana saindo sozinhos enquanto você atende.</p><span class="go">Ver como fica</span></a>
+      <a class="niche n-rest" href="./restaurante.html" data-rv style="--d:.08s">
+        <span class="strip" aria-hidden="true"><i><em>Prato<br>do dia</em></i><i><em>Combo<br>almoço</em></i><i><em>Aberto<br>até 23h</em></i></span>
+        <h3>Restaurantes e lanchonetes</h3><p>Prato do dia, cardápio e combo do almoço no ar antes da fome bater.</p><span class="go">Ver como fica</span></a>
+      <a class="niche n-pet" href="./pet.html" data-rv style="--d:.16s">
+        <span class="strip" aria-hidden="true"><i><em>Banho<br>e tosa</em></i><i><em>Vacinas<br>em dia</em></i><i><em>Chegou<br>ração</em></i></span>
+        <h3>Pet shops e clínicas</h3><p>Banho e tosa, vacinas e novidades da loja aparecendo para quem mora perto.</p><span class="go">Ver como fica</span></a>
     </div>
   </div>
 </section>
 
-<!-- 05 · VER NA PRÁTICA -->
+<!-- VER NA PRÁTICA -->
 <section class="watch" id="ver" data-sec>
   <div class="wrap">
-    <div class="watch-head">
-      <p class="kicker" data-c="demo.eyebrow">DEMONSTRAÇÃO DO PAINEL</p>
-      <h2 class="big sp" data-c="demo.title">Veja o LocalInsta funcionando antes de instalar.</h2>
+    <div class="watch-head" data-rv>
+      <h2 class="big" data-c="demo.title">Veja o LocalInsta funcionando antes de instalar.</h2>
       <p class="sub" data-c="demo.text">Assista ao painel em uso e entenda, em poucos minutos, como a sua rotina de posts passa a rodar sozinha.</p>
     </div>
-    <div class="video video-main rv" id="demoVideo" data-video="KPngpb5FRxw"><button class="video-play" type="button" aria-label="Reproduzir vídeo de demonstração"><span><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+    <div class="video video-main" id="demoVideo" data-video="KPngpb5FRxw" data-rv><button class="video-play" type="button" aria-label="Reproduzir vídeo de demonstração"><span><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
 
     <h3 class="mini-title">Mini-cursos</h3>
     <div class="courses" id="courses">
-      <article class="course rv" data-i="0">
-        <div class="video video-sm" data-video="HnNemVCRQhg"><button class="video-play" type="button" aria-label="Reproduzir mini-curso"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div>
-        <div><small><span data-f="module">MÓDULO 01</span> · <span data-f="duration">12 min</span></small><h4 data-f="title">Primeiros passos</h4><p data-f="description">Configure o LocalInsta, conecte a conta, faça o teste e coloque a primeira rotina em movimento.</p></div>
+      <article class="course" data-i="0" data-rv>
+        <div class="video video-sm" data-video="HnNemVCRQhg"><button class="video-play" type="button" aria-label="Reproduzir mini-curso"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+        <div><small>Aula 1, <span data-f="duration">12 min</span></small><h4 data-f="title">Primeiros passos</h4><p data-f="description">Configure o LocalInsta, conecte a conta, faça o teste e coloque a primeira rotina em movimento.</p></div>
       </article>
-      <article class="course rv" data-i="1">
-        <div class="video video-sm" data-video="KPngpb5FRxw"><button class="video-play" type="button" aria-label="Reproduzir mini-curso"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div>
-        <div><small><span data-f="module">MÓDULO 02</span> · <span data-f="duration">15 min</span></small><h4 data-f="title">Dominando a IA Vision</h4><p data-f="description">Entenda como a inteligência artificial usa o contexto da marca para apoiar legendas e sugestões de conteúdo.</p></div>
+      <article class="course" data-i="1" data-rv style="--d:.08s">
+        <div class="video video-sm" data-video="KPngpb5FRxw"><button class="video-play" type="button" aria-label="Reproduzir mini-curso"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button></div>
+        <div><small>Aula 2, <span data-f="duration">15 min</span></small><h4 data-f="title">Como a IA escreve suas legendas</h4><p data-f="description">Veja como o LocalInsta olha a sua foto e escreve a legenda no jeito da sua empresa.</p></div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- 06 · SEGURANÇA -->
+<!-- SEGURANÇA -->
 <section class="safe" id="seguro" data-sec>
   <div class="wrap safe-grid">
-    <div>
-      <p class="kicker kicker-l">SEU COMPUTADOR, SUA CONTA</p>
-      <h2 class="big sp">Tudo roda no seu Windows, com você no controle.</h2>
-    </div>
-    <ul class="safe-list">
-      <li><b>01</b><span>Seus dados de acesso ficam protegidos no seu computador, não em um servidor de terceiros.</span></li>
-      <li><b>02</b><span>Você escolhe dias, horários e conteúdo antes de ligar.</span></li>
-      <li><b>03</b><span>O painel registra tudo o que foi publicado, e você pausa quando quiser.</span></li>
+    <h2 class="big" data-rv>Tudo roda no seu Windows, com você no controle.</h2>
+    <ul class="safe-list" data-rv>
+      <li>Seus dados de acesso ficam protegidos no seu computador, não em um servidor de terceiros.</li>
+      <li>Você escolhe dias, horários e conteúdo antes de ligar.</li>
+      <li>O painel registra tudo o que foi publicado, e você pausa quando quiser.</li>
     </ul>
-    <div class="resp rv">
+    <div class="resp">
       <h3 data-c="responsibleUse.title">Publicar com segurança pede acompanhamento e uma conta bem configurada.</h3>
       <p data-c="responsibleUse.text">O LocalInsta não é produto oficial, afiliado, patrocinado ou endossado pelo Instagram ou pela Meta. Você continua responsável pela conta, pelas mídias, pelo conteúdo publicado e pelas regras que escolhe usar.</p>
-      <ul><li data-c="responsibleUse.notes.0">Faça o primeiro teste na conta correta.</li><li data-c="responsibleUse.notes.1">Revise a mídia e a legenda antes de ativar.</li><li data-c="responsibleUse.notes.2">Nunca envie senha, token, cookie ou 2FA ao suporte.</li></ul>
+      <ul><li data-c="responsibleUse.notes.0">Faça o primeiro teste na conta certa.</li><li data-c="responsibleUse.notes.1">Confira a imagem e a legenda antes de ligar.</li><li data-c="responsibleUse.notes.2">Nunca envie sua senha ou códigos de verificação para o suporte.</li></ul>
     </div>
   </div>
 </section>
 
-<!-- 07 · PREÇO -->
+<!-- PREÇO -->
 <section class="price" id="preco" data-sec>
   <div class="wrap price-grid">
     <div>
-      <p class="kicker">PREÇO SEM SURPRESA</p>
-      <h2 class="big sp">Teste 30 dias. Sem cartão. Sem compromisso.</h2>
-      <ul class="price-list" style="margin-top:30px">
-        <li class="g-up">Instale e use tudo por 30 dias, sem cadastrar cartão.</li>
-        <li class="g-up">Gostou? Assina pelo próprio app. Não gostou? É só não pagar.</li>
-        <li class="g-up">Sem fidelidade e sem multa: sem renovação, a automação para sozinha.</li>
-        <li class="g-up">Funciona em computadores com Windows 10 ou 11.</li>
+      <h2 class="big" data-rv>Teste 30 dias. Sem cartão. Sem compromisso.</h2>
+      <ul class="price-list" data-rv>
+        <li>Instale e use tudo por 30 dias, sem cadastrar cartão.</li>
+        <li>Gostou? Assina pelo próprio app. Não gostou? É só não pagar.</li>
+        <li>Sem fidelidade e sem multa: sem renovação, a automação para sozinha.</li>
+        <li>Funciona em computadores com Windows 10 ou 11.</li>
       </ul>
     </div>
-    <div class="price-card">
-      <span class="price-badge">30 DIAS GRÁTIS</span>
-      <p class="price-free">R$ 0<small>no primeiro mês, sem cartão</small></p>
-      <div class="price-then">Depois do teste
-        <b><span class="skel" data-preco-mes>R$ 00,00</span><span style="font-size:.5em;font-weight:600;color:var(--ink2)"> /mês</span></b>
+    <div class="price-card" id="priceCard">
+      <span class="tag-hole" aria-hidden="true"></span>
+      <p class="price-free"><span>Primeiro mês</span>R$ 0</p>
+      <p class="price-freenote">30 dias grátis, sem cartão.</p>
+      <div class="price-then"><span>Depois do teste</span>
+        <b><span class="skel" data-preco-mes>R$ 00,00</span><small> por mês</small></b>
         <span class="pd">Cerca de <span class="skel" data-preco-dia>R$ 0,00</span> por dia. <span data-preco-nota>Calculando o valor de hoje…</span></span>
       </div>
-      <a class="btn btn-solid btn-lg" style="margin-top:28px;width:100%;justify-content:center" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download>Começar o teste grátis</a>
+      <a class="btn btn-solid btn-lg" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download>Começar o teste grátis</a>
     </div>
   </div>
 </section>
 
-<!-- 08 · DÚVIDAS -->
+<!-- DÚVIDAS -->
 <section class="faq" id="duvidas" data-sec>
   <div class="wrap faq-grid">
     <div class="faq-side">
-      <p class="kicker">RESPOSTAS RÁPIDAS</p>
-      <h2 class="big sp">Antes de baixar, tire suas dúvidas.</h2>
+      <h2 class="big" data-rv>Antes de baixar, tire suas dúvidas.</h2>
       <p>Não achou a sua? Chama a gente no WhatsApp, que responde gente de verdade.</p>
       <a class="btn btn-line btn-lg" href="https://wa.me/5543996975141" data-link="whatsapp" data-wa target="_blank" rel="noopener">Perguntar no WhatsApp</a>
     </div>
     <div class="faq-list">
-      <details class="g-up"><summary>Funciona no Mac ou no celular?</summary><div class="ans"><p>Não. O LocalInsta é um programa para computador com <b>Windows 10 ou 11</b>. Você continua usando o Instagram normalmente no celular; quem publica é o seu PC.</p></div></details>
-      <details class="g-up"><summary>Meu computador precisa ficar ligado?</summary><div class="ans"><p>Sim. As publicações saem do seu computador, então ele precisa estar ligado e com internet nos horários. Se ele estiver desligado na hora, o LocalInsta reorganiza o que atrasou ao longo do dia, até às 23h30.</p></div></details>
-      <details class="g-up"><summary>Precisa de cartão para testar?</summary><div class="ans"><p>Não. São 30 dias grátis, sem cadastrar cartão. Você só paga se decidir continuar.</p></div></details>
-      <details class="g-up"><summary>Quanto custa depois do teste?</summary><div class="ans"><p>Hoje sai <b data-preco-mes class="skel">R$ 00,00</b> por mês, cerca de <span data-preco-dia class="skel">R$ 0,00</span> por dia. O valor acompanha a cotação do dólar, então pode variar um pouco. O preço final aparece no app na hora de assinar.</p></div></details>
-      <details class="g-up"><summary>Posso perder minha conta do Instagram?</summary><div class="ans"><p>Usando em um ritmo normal, o LocalInsta publica como uma pessoa faria: horários sorteados dentro das janelas que você escolhe e intervalo mínimo entre Stories.</p><p>O risco aparece quando se exagera. Configurar algo como 80 Stories por dia não parece humano e pode fazer o Instagram limitar a conta. Mantenha um ritmo realista e faça o primeiro teste com calma.</p></div></details>
-      <details class="g-up"><summary>Como eu cancelo?</summary><div class="ans"><p>É só não renovar. Não tem fidelidade nem multa: quando o período pago acaba, a automação para sozinha.</p></div></details>
-      <details class="g-up"><summary>O Windows mostrou um aviso azul. É vírus?</summary><div class="ans"><p>Não. O aviso aparece porque o instalador ainda não tem uma assinatura digital paga. Clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>. Se preferir, a gente instala com você pelo WhatsApp.</p></div></details>
-      <details class="g-up"><summary>Preciso entender de tecnologia?</summary><div class="ans"><p>Não. O app tem um passo a passo na primeira configuração, mini-cursos em vídeo aqui no site e suporte pelo WhatsApp.</p></div></details>
+      <details><summary>Funciona no Mac ou no celular?</summary><div class="ans"><p>Não. O LocalInsta é um programa para computador com <b>Windows 10 ou 11</b>. Você continua usando o Instagram normalmente no celular; quem publica é o seu PC.</p></div></details>
+      <details><summary>Meu computador precisa ficar ligado?</summary><div class="ans"><p>Sim. As publicações saem do seu computador, então ele precisa estar ligado e com internet nos horários. Se ele estiver desligado na hora, o LocalInsta reorganiza o que atrasou ao longo do dia, até às 23h30.</p></div></details>
+      <details><summary>Precisa de cartão para testar?</summary><div class="ans"><p>Não. São 30 dias grátis, sem cadastrar cartão. Você só paga se decidir continuar.</p></div></details>
+      <details><summary>Quanto custa depois do teste?</summary><div class="ans"><p>Hoje sai <b data-preco-mes class="skel">R$ 00,00</b> por mês, cerca de <span data-preco-dia class="skel">R$ 0,00</span> por dia. O valor acompanha a cotação do dólar, então pode variar um pouco. O preço final aparece no app na hora de assinar.</p></div></details>
+      <details><summary>Posso perder minha conta do Instagram?</summary><div class="ans"><p>Usando em um ritmo normal, o LocalInsta publica como uma pessoa faria: horários sorteados dentro das janelas que você escolhe e intervalo mínimo entre Stories.</p><p>O risco aparece quando se exagera. Configurar algo como 80 Stories por dia não parece humano e pode fazer o Instagram limitar a conta. Mantenha um ritmo realista e faça o primeiro teste com calma.</p></div></details>
+      <details><summary>Como eu cancelo?</summary><div class="ans"><p>É só não renovar. Não tem fidelidade nem multa: quando o período pago acaba, a automação para sozinha.</p></div></details>
+      <details><summary>O Windows mostrou um aviso azul. É vírus?</summary><div class="ans"><p>Não. O aviso aparece porque o instalador ainda não tem uma assinatura digital paga. Clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>. Se preferir, a gente instala com você pelo WhatsApp.</p></div></details>
+      <details><summary>Preciso entender de tecnologia?</summary><div class="ans"><p>Não. O app tem um passo a passo na primeira configuração, mini-cursos em vídeo aqui no site e suporte pelo WhatsApp.</p></div></details>
     </div>
   </div>
 </section>
 
-<!-- 09 · BAIXAR -->
+<!-- BAIXAR -->
 <section class="get" id="baixar" data-sec>
   <div class="wrap get-in">
-    <img src="./logo.png" width="76" height="76" alt="" class="get-logo" aria-hidden="true">
-    <h2 class="huge sp" data-c="release.title">Deixe seu Instagram trabalhando por você.</h2>
+    <h2 class="huge" data-c="release.title">Deixe seu Instagram trabalhando por você.</h2>
     <p data-c="release.text">Teste grátis por 30 dias. Baixe o instalador para Windows, abra o LocalInsta e siga o passo a passo da primeira configuração, com calma.</p>
-    <div class="cta-row cta-c">
-      <a class="btn btn-white btn-lg" id="downloadMain" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>Baixar para Windows</a>
+    <div class="cta-row">
+      <a class="btn btn-white btn-lg" id="downloadMain" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>Baixar para Windows</a>
       <a class="btn btn-ghost-w btn-lg" href="https://wa.me/5543996975141" data-link="whatsapp" data-wa target="_blank" rel="noopener"><span data-c="release.supportCta">Falar no WhatsApp</span></a>
     </div>
     <small id="versionNote"></small>
@@ -302,7 +310,7 @@
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <div class="foot-brand"><img src="./logo.png" width="30" height="30" alt=""><div><b>LocalInsta</b><span data-c="support.footerDescription">Uma central desktop para transformar conteúdo, regras e rotina em presença contínua no Instagram.</span></div></div>
+    <div class="foot-brand"><img src="./logo.png" width="30" height="30" alt=""><div><b>LocalInsta</b><span data-c="support.footerDescription">Um programa para Windows que mantém o seu Instagram sempre em dia.</span></div></div>
     <div class="foot-links">
       <a href="https://www.instagram.com/app.localinsta/" data-link="instagram" target="_blank" rel="noopener">Instagram</a>
       <a href="https://github.com/QG-Digital/LocalInsta" data-link="github" target="_blank" rel="noopener">GitHub</a>
@@ -311,22 +319,27 @@
       <a href="./privacidade.html">Privacidade</a>
       <a href="./termos.html">Termos de uso</a>
     </div>
-    <p class="legal">LocalInsta é um produto da QG Digital, desenvolvido por Felipe Indejejczak · Londrina, PR. LocalInsta não é produto oficial, afiliado, patrocinado ou endossado pelo Instagram ou pela Meta.</p>
+    <p class="legal">LocalInsta é um produto da QG Digital, desenvolvido por Felipe Indejejczak, em Londrina, PR. LocalInsta não é produto oficial, afiliado, patrocinado ou endossado pelo Instagram ou pela Meta.</p>
   </div>
 </footer>
 
 <a class="wa-float" href="https://wa.me/5543996975141" data-link="whatsapp" data-wa target="_blank" rel="noopener" aria-label="Falar com a equipe">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-12.2 7.5L3 20.5l1.6-5.4A8.4 8.4 0 1121 11.5z"/></svg>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-12.2 7.5L3 20.5l1.6-5.4A8.4 8.4 0 1121 11.5z"/></svg>
   <span data-c="support.floatingLabel">Falar com a equipe</span>
 </a>
 
 <!-- modal: mini tutorial antes de baixar -->
 <div class="dl-modal" id="dlModal" role="dialog" aria-modal="true" aria-labelledby="dlTitle" aria-hidden="true">
   <div class="dl-bg" data-dl-close></div>
-  <div class="dl-box">
+  <div class="dl-box" data-lenis-prevent>
     <button class="dl-x" type="button" data-dl-close aria-label="Fechar">×</button>
     <h2 id="dlTitle">Quase lá! Veja como instalar em 1 minuto.</h2>
     <p>Teste grátis por 30 dias, sem cartão.</p>
+    <div class="dl-mobile">
+      <b>Está no celular?</b>
+      <p>O LocalInsta é instalado no computador com Windows. Envie o link para você mesmo e abra lá.</p>
+      <a class="btn btn-solid" href="https://wa.me/?text=Baixar%20o%20LocalInsta%20no%20computador%3A%20https%3A%2F%2Flocalinsta.com.br%2F%3Futm_source%3Dcelular" target="_blank" rel="noopener" data-send-link>Enviar para o meu WhatsApp</a>
+    </div>
     <div class="dl-steps">
       <div class="dl-step"><b>1</b><div><h3>Baixe o instalador</h3><p>O arquivo é grande (cerca de 500 MB). Dependendo da internet, leva alguns minutos.</p></div></div>
       <div class="dl-step"><b>2</b><div><h3>Se o Windows mostrar um aviso azul, está tudo bem</h3><p>Ele aparece porque o instalador ainda não tem assinatura digital paga. Clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>.</p>
@@ -334,17 +347,15 @@
       <div class="dl-step"><b>3</b><div><h3>Abra o LocalInsta e siga o passo a passo</h3><p>A primeira configuração leva poucos minutos. Seus 30 dias começam quando a automação liga pela primeira vez.</p></div></div>
     </div>
     <div class="dl-go">
-      <a class="btn btn-solid btn-lg" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download-real><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>Baixar agora</a>
+      <a class="btn btn-solid btn-lg" href="https://github.com/QG-Digital/LocalInsta/releases/latest" data-download-real><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>Baixar agora</a>
       <a class="btn btn-line btn-lg" href="https://wa.me/5543996975141?text=Ol%C3%A1%2C%20quero%20ajuda%20para%20instalar%20o%20LocalInsta." data-wa target="_blank" rel="noopener">Quero ajuda para instalar</a>
-      <small>Windows 10 ou 11 · Ao baixar, você concorda com os <a href="./termos.html">Termos de uso</a> e a <a href="./privacidade.html">Política de privacidade</a>.</small>
+      <small>Windows 10 ou 11. Ao baixar, você concorda com os <a href="./termos.html">Termos de uso</a> e a <a href="./privacidade.html">Política de privacidade</a>.</small>
     </div>
     <div class="dl-done">O download começou. Quando terminar, abra o arquivo e siga os passos acima. Qualquer dúvida, chama no WhatsApp.</div>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.8/dist/lenis.min.js" defer></script>
-<script src="./ls.js?v=20261108b"></script>
-<script src="./ls2.js?v=20261108b" defer></script>
+<script src="./ls.js?v=20261112a" defer></script>
+<script src="./ls2.js?v=20261112a" defer></script>
 </body>
 </html>

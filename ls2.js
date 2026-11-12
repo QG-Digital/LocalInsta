@@ -1,4 +1,4 @@
-/* LocalInsta v2 · preço ao vivo, modal de instalação, dúvidas e animações (GSAP + Lenis) */
+/* LocalInsta v3 · preço ao vivo, modal de instalação, dúvidas e rolagem suave (compartilhado com as páginas de nicho) */
 (function(){
   'use strict';
   var $ = function(s, r){ return (r || document).querySelector(s); };
@@ -8,6 +8,7 @@
   // mesma fonte do app (server.py PRECO_CONFIG_URL): o gist de preço. Mudou o gist, muda app e site.
   var PRECO_URL = 'https://gist.githubusercontent.com/QG-Digital/63a6b6bc7799a6eb588a175e1f40f7e2/raw/preco';
   var temLsJs = !!document.getElementById('dayTrack'); // página principal usa o ls.js também
+  document.documentElement.classList.add('js');
   function json(url){ return fetch(url, {cache:'no-cache'}).then(function(r){ if(!r.ok) throw r.status; return r.json(); }); }
   function brl(v){ return v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2}); }
 
@@ -56,6 +57,8 @@
     json('./site-version.json').then(linkInstalador).catch(function(){ linkInstalador(null); });
     json('./site-content.json').then(function(c){
       var g = (c && c.googleAds) || {}; convId = g.conversionSendTo || '';
+      var l = (c && c.links) || {};
+      $$('[data-link]').forEach(function(a){ var k = a.getAttribute('data-link'); if(l[k]) a.setAttribute('href', l[k]); });
       if(!g.measurementId || window.gtag) return;
       window.dataLayer = window.dataLayer || [];
       window.gtag = function(){ window.dataLayer.push(arguments); };
@@ -63,8 +66,6 @@
       var s = document.createElement('script'); s.async = true;
       s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(g.measurementId);
       document.head.appendChild(s);
-      var l = c.links || {};
-      $$('[data-link]').forEach(function(a){ var k = a.getAttribute('data-link'); if(l[k]) a.setAttribute('href', l[k]); });
     }).catch(function(){});
   }
   function conversaoNichos(){ try{ if(!temLsJs && window.gtag && convId) window.gtag('event','conversion',{send_to: convId, value: 1, currency: 'BRL'}); }catch(e){} }
@@ -76,14 +77,14 @@
     var real = $('[data-download-real]', modal); if(real && href) real.setAttribute('href', href);
     modal.classList.remove('sent'); modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('lock'); if(window.__lenis) window.__lenis.stop();
-    ultimoFoco = document.activeElement; setTimeout(function(){ real && real.focus(); }, 60);
+    ultimoFoco = document.activeElement; setTimeout(function(){ real && real.focus({preventScroll:true}); }, 60);
     return true;
   }
   function fechar(){
     if(!modal) return;
     modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lock'); if(window.__lenis) window.__lenis.start();
-    if(ultimoFoco) ultimoFoco.focus();
+    if(ultimoFoco) ultimoFoco.focus({preventScroll:true});
   }
   document.addEventListener('click', function(e){
     var a = e.target.closest('a[data-download]');
@@ -94,9 +95,26 @@
   });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal && modal.classList.contains('open')) fechar(); });
 
-  /* ---------- dúvidas: só uma aberta por vez ---------- */
-  $$('.faq details').forEach(function(d){
-    d.addEventListener('toggle', function(){ if(d.open) $$('.faq details').forEach(function(o){ if(o !== d) o.open = false; }); });
+  /* ---------- dúvidas: abre e fecha com altura animada, uma por vez ---------- */
+  var faqs = $$('.faq details');
+  function fecharFaq(d){
+    if(!d.open) return;
+    var ans = $('.ans', d); d.classList.remove('open');
+    if(reduce || !ans.animate){ d.open = false; return; }
+    var an = ans.animate([{height: ans.offsetHeight + 'px'}, {height: '0px'}], {duration: 320, easing: 'cubic-bezier(.22,.8,.24,1)'});
+    an.onfinish = function(){ d.open = false; };
+  }
+  function abrirFaq(d){
+    var ans = $('.ans', d); d.open = true; d.classList.add('open');
+    if(reduce || !ans.animate) return;
+    ans.animate([{height: '0px', opacity: 0}, {height: ans.offsetHeight + 'px', opacity: 1}], {duration: 420, easing: 'cubic-bezier(.22,.8,.24,1)'});
+  }
+  faqs.forEach(function(d){
+    $('summary', d).addEventListener('click', function(e){
+      e.preventDefault();
+      if(d.classList.contains('open')) fecharFaq(d);
+      else { faqs.forEach(function(o){ if(o !== d) fecharFaq(o); }); abrirFaq(d); }
+    });
   });
 
   /* ---------- vídeo do topo: só roda quando está visível ---------- */
@@ -108,34 +126,19 @@
     }
   }
 
-  /* ---------- rolagem suave (Lenis) + animações (GSAP / ScrollTrigger) ---------- */
-  if(reduce) return;
-  if(window.Lenis){
-    var lenis = new window.Lenis({ lerp: 0.11, wheelMultiplier: 1, anchors: { offset: -70 } });
-    window.__lenis = lenis;
-    if(window.gsap && window.ScrollTrigger){
-      lenis.on('scroll', window.ScrollTrigger.update);
-      window.gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
-      window.gsap.ticker.lagSmoothing(0);
-    } else {
-      (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(0);
+  /* ---------- páginas de nicho: blocos entram ao aparecer ---------- */
+  var ups = $$('.g-up');
+  if(ups.length){
+    if(reduce || !('IntersectionObserver' in window)) ups.forEach(function(el){ el.classList.add('in'); });
+    else {
+      var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }); }, {threshold:.12});
+      ups.forEach(function(el, i){ el.style.transitionDelay = (i % 3) * 80 + 'ms'; io.observe(el); });
     }
   }
-  if(!(window.gsap && window.ScrollTrigger)) return;
-  var gsap = window.gsap; gsap.registerPlugin(window.ScrollTrigger);
-  // blocos que sobem ao aparecer, em sequência
-  window.ScrollTrigger.batch('.g-up', {
-    start: 'top 88%', once: true,
-    onEnter: function(els){ gsap.fromTo(els, {y: 46, autoAlpha: 0}, {y: 0, autoAlpha: 1, duration: .9, ease: 'power3.out', stagger: .09, overwrite: true}); }
-  });
-  gsap.set('.g-up', {autoAlpha: 0});
-  // cartão de preço: leve inclinação e entrada com mola
-  var card = $('.price-card');
-  if(card){
-    gsap.fromTo(card, {rotate: -2.5, y: 60, autoAlpha: 0}, {rotate: 0, y: 0, autoAlpha: 1, duration: 1.1, ease: 'back.out(1.6)', scrollTrigger: {trigger: card, start: 'top 85%', once: true}});
-  }
-  // ícones dos nichos girando de leve no scroll
-  $$('.niche .ico').forEach(function(ic){
-    gsap.fromTo(ic, {rotate: -12, scale: .8}, {rotate: 0, scale: 1, ease: 'none', scrollTrigger: {trigger: ic, start: 'top 95%', end: 'top 55%', scrub: true}});
-  });
+
+  /* ---------- rolagem suave (Lenis), só com mouse; no toque fica a rolagem nativa ---------- */
+  if(reduce || !window.Lenis) return;
+  var lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 1, anchors: { offset: -64 } });
+  window.__lenis = lenis;
+  (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
 })();
