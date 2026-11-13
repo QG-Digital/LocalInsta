@@ -105,3 +105,14 @@ html.lenis,html.lenis body{height:auto}
 
 /* páginas de nicho: título do bloco verde em branco */
 .n-cta h2{color:#fff}
+
+/* modal: convite para o WhatsApp (1ª visita) */
+.wa-box{width:min(440px,100%);text-align:center;display:flex;flex-direction:column;align-items:center}
+.wa-box h2{padding-right:0;margin-top:18px;font-size:clamp(1.55rem,5vw,2rem)}
+.wa-box>p{max-width:26em;margin:10px 0 24px}
+.wa-ico{width:84px;height:84px;border-radius:26px;display:grid;place-items:center;color:#fff;background:#25D366;box-shadow:0 18px 34px -14px rgba(18,140,70,.75)}
+.btn-wa{background:#25D366;color:#06301a;width:100%;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 12px 26px -12px rgba(18,140,70,.8)}
+.btn-wa:hover{background:#1fbd5a;transform:translateY(-2px)}
+.wa-skip{margin-top:14px;border:0;background:none;color:var(--ink3);font:600 .94rem var(--text);cursor:pointer;padding:8px 12px;border-radius:10px}
+.wa-skip:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+@media (prefers-reduced-motion:reduce){.wa-modal .dl-box,.wa-modal .dl-bg{transition:none}}

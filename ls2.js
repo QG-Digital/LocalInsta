@@ -142,3 +142,32 @@
   window.__lenis = lenis;
   (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
 })();
+
+/* ---------- convite para o WhatsApp: aparece uma única vez, na 1ª visita (só na página que tem o #waModal) ---------- */
+(function(){
+  'use strict';
+  var m = document.getElementById('waModal'); if(!m) return;
+  var KEY = 'li_wa_convite_v1', foco = null;
+  function jaViu(){ try{ return !!localStorage.getItem(KEY); }catch(e){ try{ return !!sessionStorage.getItem(KEY); }catch(e2){ return false; } } }
+  function marcar(){ try{ localStorage.setItem(KEY, String(Date.now())); }catch(e){ try{ sessionStorage.setItem(KEY, '1'); }catch(e2){} } }
+  if(jaViu() || /[?&]sem_convite=1/.test(location.search)) return;
+  function abrir(){
+    if(m.classList.contains('open')) return;
+    var outro = document.getElementById('dlModal'); if(outro && outro.classList.contains('open')) return;
+    marcar(); foco = document.activeElement;
+    m.classList.add('open'); m.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lock'); if(window.__lenis) window.__lenis.stop();
+    setTimeout(function(){ var go = m.querySelector('[data-wa-go]'); if(go) go.focus({preventScroll:true}); }, 80);
+  }
+  function fechar(){
+    m.classList.remove('open'); m.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lock'); if(window.__lenis) window.__lenis.start();
+    if(foco && foco.focus) foco.focus({preventScroll:true});
+  }
+  m.addEventListener('click', function(e){
+    if(e.target.closest('[data-wa-close]')) fechar();
+    else if(e.target.closest('[data-wa-go]')) setTimeout(fechar, 150);
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && m.classList.contains('open')) fechar(); });
+  setTimeout(abrir, 900);
+})();
