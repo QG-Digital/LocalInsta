@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atualizações — LocalInsta</title>
+  <meta name="description" content="Histórico de atualizações do LocalInsta: o que foi adicionado, melhorado e corrigido em cada versão.">
+  <link rel="canonical" href="https://localinsta.com.br/atualizacoes.html">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="./logo.png">
+  <meta name="theme-color" content="#FBFDF9">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://localinsta.com.br/atualizacoes.html">
+  <meta property="og:title" content="Atualizações do LocalInsta">
+  <meta property="og:description" content="Veja tudo o que mudou em cada versão do LocalInsta.">
+  <meta property="og:image" content="https://localinsta.com.br/assets/media/localinsta-rebrand-v1210.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gabarito:wght@500;700;800;900&display=swap">
+  <style>
+    :root{
+      --paper:#FBFDF9;--mint:#E9F6EE;--mint2:#D3EEDF;--line:#D5E6DB;
+      --ink:#0E1F16;--ink2:#42574B;--ink3:#77897E;
+      --em:#12A46B;--em-d:#0A7F52;--deep:#04582A;--night:#07190F;
+      --sun:#FFC83D;--blue:#2F7DE1;--red:#D9485F;--violet:#7A5AF8;
+      --disp:'Gabarito','Figtree',system-ui,sans-serif;--text:'Figtree','Segoe UI',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--text);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(980px,100% - 40px);margin-inline:auto}
+    :focus-visible{outline:3px solid var(--em);outline-offset:3px;border-radius:6px}
+
+    header{position:sticky;top:0;z-index:20;background:rgba(251,253,249,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .top{display:flex;align-items:center;gap:14px;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font:800 21px var(--disp);letter-spacing:-.02em}
+    .brand b{color:var(--em-d)} .brand img{border-radius:9px}
+    .top nav{margin-left:auto;display:flex;gap:6px;align-items:center}
+    .top nav a{padding:8px 12px;border-radius:999px;font-weight:600;font-size:15px;color:var(--ink2)}
+    .top nav a:hover{background:var(--mint)}
+    .btn{display:inline-flex;align-items:center;gap:9px;border-radius:999px;font-weight:700;padding:12px 20px;background:var(--ink);color:#fff;transition:transform .2s,background .2s}
+    .btn:hover{background:#000;transform:translateY(-1px)}
+    .top .btn{padding:9px 16px;font-size:15px;color:#fff}
+
+    .hero{padding:clamp(48px,8vw,90px) 0 26px}
+    .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--em-d);background:var(--mint);border:1px solid var(--mint2);padding:6px 12px;border-radius:999px}
+    .kicker i{width:8px;height:8px;border-radius:50%;background:var(--em);box-shadow:0 0 0 4px rgba(18,164,107,.18)}
+    h1{font:800 clamp(2.4rem,6vw,4rem)/1 var(--disp);letter-spacing:-.035em;margin:18px 0 14px}
+    .lead{color:var(--ink2);font-size:1.12rem;max-width:36em}
+
+    /* versão atual */
+    .latest{margin:34px 0 10px;background:linear-gradient(150deg,var(--night),#0C3A22 70%,var(--deep));color:#EAFBF1;border-radius:26px;padding:clamp(24px,4vw,40px);box-shadow:0 30px 60px -34px rgba(4,88,42,.65);position:relative;overflow:hidden}
+    .latest::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,61,.28),transparent 65%)}
+    .latest-head{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px 22px;position:relative;z-index:1}
+    .latest .lbl{font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#9FE3BE}
+    .latest h2{font:900 clamp(2.4rem,6vw,3.6rem)/1 var(--disp);letter-spacing:-.04em;color:#fff;margin-top:6px}
+    .latest .meta{color:#B9D9C6;font-size:15px}
+    .edition{display:inline-block;background:var(--sun);color:var(--ink);font:800 13px/1.2 var(--text);letter-spacing:0;padding:5px 11px;border-radius:999px;margin-left:6px;vertical-align:middle}
+    .dl{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+    .dl .btn{background:var(--sun);color:var(--ink)}
+    .dl .btn:hover{background:#FFD566}
+    .dl small{color:#9FC4AE;font-size:12.5px;max-width:300px;text-align:right;word-break:break-all}
+    .latest .notes{position:relative;z-index:1;margin-top:26px;border-top:1px solid rgba(255,255,255,.14);padding-top:22px}
+    .latest .item{color:#E4F5EB}
+    .latest .sub-t{color:#fff}
+
+    /* filtros */
+    .bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:44px 0 18px}
+    .bar h3{font:800 1.6rem var(--disp);letter-spacing:-.02em;margin-right:auto}
+    .chip{border:1px solid var(--line);background:#fff;color:var(--ink2);font:600 14px var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;transition:.15s}
+    .chip:hover{border-color:var(--em)}
+    .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+    /* linha do tempo */
+    .timeline{position:relative;padding-left:30px}
+    .timeline::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;background:var(--line)}
+    .ver{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px;margin-bottom:16px}
+    .ver::before{content:"";position:absolute;left:-29px;top:28px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--em)}
+    .ver-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px}
+    .ver-h h4{font:800 1.45rem var(--disp);letter-spacing:-.02em}
+    .ver-h time{color:var(--ink3);font-size:14.5px}
+    .ver .edition{font-size:11.5px;padding:3px 9px}
+    .notes{margin-top:14px;display:grid;gap:10px}
+    .sub-t{font:700 1.05rem var(--disp);margin-top:6px}
+    .item{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;color:#1C3328;line-height:1.55}
+    .tag{font:800 11px/1 var(--text);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:7px;margin-top:3px;white-space:nowrap;min-width:84px;text-align:center}
+    .t-novo{background:#DDF6E8;color:#07733F}
+    .t-melhoria{background:#E3EEFD;color:#1D5FB8}
+    .t-correcao{background:#FDE8EC;color:#B22D44}
+    .t-removido{background:#EEE9FE;color:#5B3FD0}
+    .latest .t-novo{background:#1F8E57;color:#fff}.latest .t-melhoria{background:#2C67B8;color:#fff}.latest .t-correcao{background:#B83A50;color:#fff}.latest .t-removido{background:#6448D8;color:#fff}
+
+    .quiet{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:14px 20px;background:transparent;border-style:dashed}
+    .quiet h4{font-size:1.1rem}
+    .quiet p{color:var(--ink3);font-size:14.5px;width:100%}
+    .more{display:block;margin:6px auto 0;border:1px solid var(--line);background:#fff;font:700 15px var(--text);padding:12px 20px;border-radius:999px;cursor:pointer}
+    .more:hover{border-color:var(--em)}
+    .empty,.err{color:var(--ink2);padding:30px 0}
+    .skel{height:150px;border-radius:20px;background:linear-gradient(90deg,var(--mint),#F3FBF6,var(--mint));background-size:200% 100%;animation:sk 1.2s infinite;margin-bottom:16px}
+    @keyframes sk{to{background-position:-200% 0}}
+
+    footer{border-top:1px solid var(--line);color:var(--ink2);font-size:14px;margin-top:70px}
+    footer .wrap{padding:26px 0;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+    footer a{color:var(--em-d)}
+    @media(max-width:640px){
+      .top nav a:not(.btn){display:none}
+      .dl{margin-left:0;align-items:flex-start}.dl small{text-align:left}
+      .item{grid-template-columns:1fr;gap:6px}.tag{justify-self:start;min-width:0}
+      .timeline{padding-left:22px}.ver::before{left:-21px}.timeline::before{left:5px}
+    }
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <a class="brand" href="./" aria-label="LocalInsta, voltar ao início"><img src="./logo.png" width="32" height="32" alt=""><span>Local<b>Insta</b></span></a>
+    <nav aria-label="Principal">
+      <a href="./">Início</a>
+      <a href="./#duvidas">Dúvidas</a>
+      <a class="btn" href="https://github.com/QG-Digital/LocalInsta/releases/latest" id="topDl">Baixar</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="kicker"><i></i> Histórico de atualizações</span>
+    <h1>O que mudou no LocalInsta</h1>
+    <p class="lead">Toda versão nova aparece aqui: o que foi adicionado, o que melhorou e o que foi corrigido. O app avisa sozinho quando sai uma atualização.</p>
+  </section>
+
+  <div id="latest"><div class="skel" style="height:260px"></div></div>
+
+  <div class="bar" id="bar" hidden>
+    <h3>Versões anteriores</h3>
+    <button class="chip" data-f="todos" aria-pressed="true">Tudo</button>
+    <button class="chip" data-f="novo" aria-pressed="false">Novidades</button>
+    <button class="chip" data-f="melhoria" aria-pressed="false">Melhorias</button>
+    <button class="chip" data-f="correcao" aria-pressed="false">Correções</button>
+  </div>
+  <div class="timeline" id="list"><div class="skel"></div><div class="skel"></div></div>
+  <noscript><p class="err">Ative o JavaScript para ver o histórico de atualizações.</p></noscript>
+</main>
+
+<footer><div class="wrap"><span>LocalInsta · um produto da QG Digital · Londrina, PR</span><span><a href="./">Início</a> · <a href="./privacidade.html">Privacidade</a> · <a href="./termos.html">Termos de uso</a></span></div></footer>
+
+<script>
+(function () {
+  'use strict';
+  var REPO_DL = 'https://github.com/QG-Digital/LocalInsta/releases/download/business-tools/';
+  var TAGS = { novo: 'Novo', melhoria: 'Melhoria', correcao: 'Correção', removido: 'Removido' };
+  var filtro = 'todos';
+  var dados = [];
+  var mostrar = 12;
+
+  function esc(t) {
+    return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function md(t) { return esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); }
+  function dataBR(iso) {
+    var p = String(iso || '').split('-');
+    if (p.length !== 3) return iso || '';
+    var m = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'][+p[1] - 1] || p[1];
+    return (+p[2]) + ' de ' + m + ' de ' + p[0];
+  }
+
+  // Descobre o tipo pela seção ("Correções", "Adicionado"...) ou pelo começo do item.
+  function tipoDoTitulo(t) {
+    t = t.toLowerCase();
+    if (/corre[çc]|corrigid|bug/.test(t)) return 'correcao';
+    if (/remov|retirad/.test(t)) return 'removido';
+    if (/adicion|novidade|novo|nova/.test(t)) return 'novo';
+    if (/melhor|ajust/.test(t)) return 'melhoria';
+    return '';
+  }
+  function tipoDoItem(t) {
+    var s = t.toLowerCase().replace(/^[^a-zà-ú0-9]+/, '');
+    var titulo = s.split(':')[0];           // "Login mais fácil: ..." -> "login mais fácil"
+    if (/^(corre[çc][ãa]o|corre[çc][õo]es|corrigid|resolvid|arrumad)/.test(s) || /\b(corrigid[oa]s?|n[ãa]o (some|trava|mostra) mais)\b/.test(titulo)) return 'correcao';
+    if (/^(removid|retirad|saiu)/.test(s)) return 'removido';
+    if (/^(novo|nova|novos|novas|novidade|adicionad|agora d[áa]|v[áa]ri[ao]s)|novo recurso/.test(s) || /\bnov[oa]s?\b/.test(titulo)) return 'novo';
+    return 'melhoria';
+  }
+
+  // Texto livre -> blocos [{titulo, itens:[{tipo, texto}]}]
+  function interpretar(notas) {
+    var blocos = [], atual = { titulo: '', tipo: '', itens: [] };
+    String(notas || '').split(/\r?\n/).forEach(function (linha) {
+      var l = linha.trim();
+      if (!l || /^-{3,}$/.test(l)) return;
+      var bullet = /^([•\-*–]|\d+[.)])\s+/.test(l);
+      if (!bullet && (/:$/.test(l) || /^\*\*.+\*\*$/.test(l) || /^[^\w\s]{1,3}\s*\*\*/.test(l))) {
+        if (atual.titulo || atual.itens.length) blocos.push(atual);
+        var tit = l.replace(/:$/, '').replace(/\*\*/g, '').trim();
+        atual = { titulo: tit, tipo: tipoDoTitulo(tit), itens: [] };
+        return;
+      }
+      var texto = l.replace(/^([•\-*–]|\d+[.)])\s+/, '');
+      atual.itens.push({ tipo: atual.tipo || tipoDoItem(texto), texto: texto });
+    });
+    if (atual.titulo || atual.itens.length) blocos.push(atual);
+    return blocos;
+  }
+
+  function renderNotas(v, f) {
+    var html = '';
+    interpretar(v.notas).forEach(function (b) {
+      var itens = b.itens.filter(function (i) { return f === 'todos' || i.tipo === f; });
+      if (!itens.length) return;
+      if (b.titulo) html += '<p class="sub-t">' + md(b.titulo) + '</p>';
+      itens.forEach(function (i) {
+        html += '<div class="item"><span class="tag t-' + i.tipo + '">' + TAGS[i.tipo] + '</span><span>' + md(i.texto) + '</span></div>';
+      });
+    });
+    return html;
+  }
+
+  function edicao(v) { return v.edicao ? ' <span class="edition">' + esc(v.edicao) + '</span>' : ''; }
+
+  function renderLatest(v) {
+    var nome = v.instalador ? v.instalador : '';
+    var link = nome ? REPO_DL + encodeURIComponent(nome) : 'https://github.com/QG-Digital/LocalInsta/releases/latest';
+    document.getElementById('topDl').href = link;
+    var notas = renderNotas(v, 'todos');
+    document.getElementById('latest').innerHTML =
+      '<section class="latest" aria-labelledby="vAtual">' +
+        '<div class="latest-head">' +
+          '<div><div class="lbl">Versão atual</div><h2 id="vAtual">v' + esc(v.versao) + edicao(v) + '</h2>' +
+          '<div class="meta">Lançada em ' + dataBR(v.data) + '</div></div>' +
+          '<div class="dl"><a class="btn" href="' + esc(link) + '">' +
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>' +
+            'Baixar instalador</a>' +
+            (nome ? '<small>' + esc(nome.replace(/_/g, ' ').replace(/\.exe$/i, '')) + '</small>' : '') +
+          '</div>' +
+        '</div>' +
+        (notas ? '<div class="notes">' + notas + '</div>' : '') +
+      '</section>';
+  }
+
+  function renderLista() {
+    var lista = dados.slice(1);
+    var html = '', n = 0;
+    for (var k = 0; k < lista.length && n < mostrar; k++) {
+      var v = lista[k];
+      var temNotas = String(v.notas || '').trim().length > 0;
+      if (!temNotas) {
+        if (filtro !== 'todos') continue;
+        html += '<article class="ver quiet"><h4>v' + esc(v.versao) + '</h4><time datetime="' + esc(v.data) + '">' + dataBR(v.data) + '</time>' +
+          '<p>Ajustes e correções internas.</p></article>';
+        n++;
+        continue;
+      }
+      var notas = renderNotas(v, filtro);
+      if (!notas) continue;
+      html += '<article class="ver"><div class="ver-h"><h4>v' + esc(v.versao) + edicao(v) + '</h4><time datetime="' + esc(v.data) + '">' + dataBR(v.data) + '</time></div>' +
+        '<div class="notes">' + notas + '</div></article>';
+      n++;
+    }
+    var resto = k < lista.length;
+    if (!html) html = '<p class="empty">Nenhuma versão anterior com esse tipo de mudança.</p>';
+    if (resto) html += '<button class="more" id="more" type="button">Ver versões mais antigas</button>';
+    document.getElementById('list').innerHTML = html;
+    var b = document.getElementById('more');
+    if (b) b.onclick = function () { mostrar += 20; renderLista(); };
+  }
+
+  document.getElementById('bar').addEventListener('click', function (e) {
+    var c = e.target.closest('.chip');
+    if (!c) return;
+    filtro = c.getAttribute('data-f');
+    mostrar = 12;
+    Array.prototype.forEach.call(this.querySelectorAll('.chip'), function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+    renderLista();
+  });
+
+  function chave(v) { return String(v.versao || '0.0.0').split('.').map(function (x) { return ('00000' + x).slice(-5); }).join('.'); }
+
+  fetch('./changelog.json?v=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (j) {
+      dados = (j && Array.isArray(j.versoes) ? j.versoes : []).filter(function (v) { return v && v.versao; });
+      dados.sort(function (a, b) { return chave(b) < chave(a) ? -1 : chave(b) > chave(a) ? 1 : 0; });
+      if (!dados.length) {
+        document.getElementById('latest').innerHTML = '<p class="empty">Ainda não há atualizações registradas.</p>';
+        document.getElementById('list').innerHTML = '';
+        return;
+      }
+      renderLatest(dados[0]);
+      document.getElementById('bar').hidden = dados.length < 2;
+      renderLista();
+    })
+    .catch(function () {
+      document.getElementById('latest').innerHTML = '<p class="err">Não foi possível carregar o histórico agora. <a href="https://github.com/QG-Digital/LocalInsta/releases/latest" style="color:var(--em-d)">Baixe a versão mais recente pelo GitHub</a>.</p>';
+      document.getElementById('list').innerHTML = '';
+    });
+})();
+</script>
+</body>
+</html>
