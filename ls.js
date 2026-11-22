@@ -36,7 +36,7 @@
       var id = course.videoId || course.id; if(id) $('[data-video]', card).setAttribute('data-video', id);
     });
     if(c.identity && c.identity.siteTitle) document.title = c.identity.siteTitle;
-    loadAds(c.googleAds || {});
+    /* Google Ads: carregado pelo track.js (com aviso de cookies) */
     posters();
   }
 
@@ -52,10 +52,7 @@
     document.head.appendChild(s);
   }
   function conversion(){ try{ if(window.gtag && convId) window.gtag('event','conversion',{send_to: convId, value: 1, currency: 'BRL'}); }catch(e){} }
-  document.addEventListener('click', function(e){
-    var a = e.target.closest('a'); if(!a) return;
-    if(a.hasAttribute('data-download-real') || a.hasAttribute('data-wa')) conversion();
-  });
+  /* conversões: medidas pelo track.js */
 
   /* ---------- download ---------- */
   function applyVersion(v){

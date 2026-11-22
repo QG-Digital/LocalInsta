@@ -59,13 +59,7 @@
       var g = (c && c.googleAds) || {}; convId = g.conversionSendTo || '';
       var l = (c && c.links) || {};
       $$('[data-link]').forEach(function(a){ var k = a.getAttribute('data-link'); if(l[k]) a.setAttribute('href', l[k]); });
-      if(!g.measurementId || window.gtag) return;
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function(){ window.dataLayer.push(arguments); };
-      window.gtag('js', new Date()); window.gtag('config', g.measurementId);
-      var s = document.createElement('script'); s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(g.measurementId);
-      document.head.appendChild(s);
+      /* Google Ads: carregado pelo track.js (com aviso de cookies) */
     }).catch(function(){});
   }
   function conversaoNichos(){ try{ if(!temLsJs && window.gtag && convId) window.gtag('event','conversion',{send_to: convId, value: 1, currency: 'BRL'}); }catch(e){} }
@@ -90,7 +84,7 @@
     var a = e.target.closest('a[data-download]');
     if(a && modal && !modal.contains(a)){ e.preventDefault(); abrir(a.getAttribute('href')); return; }
     var r = e.target.closest('a[data-download-real]');
-    if(r){ modal && modal.classList.add('sent'); conversaoNichos(); return; }
+    if(r){ modal && modal.classList.add('sent'); return; }
     if(e.target.closest('[data-dl-close]')) fechar();
   });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal && modal.classList.contains('open')) fechar(); });
