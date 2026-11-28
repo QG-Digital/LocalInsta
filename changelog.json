@@ -3,11 +3,18 @@
   "versao_schema": 1,
   "versoes": [
     {
+      "versao": "1.5.4",
+      "data": "2026-11-28",
+      "edicao": "Definitive Edition",
+      "notas": "• Corrigido: stories (e posts) que eram publicados mas ficavam como \"falhou\" e eram repetidos 2 a 3 vezes no dia. Depois que o robô clica em publicar, agora sempre registra como publicado, mesmo sem confirmação do Instagram.\n• Melhorado: \"Iniciar com o PC\" aparece só na conta principal. \"Iniciar automação\" continua separado por conta (ao ligar o PC, só posta quem estiver com a automação ligada).",
+      "instalador": "Instalador_LocalInsta_v1.5.4_Definitive_Edition.exe"
+    },
+    {
       "versao": "1.5.3",
       "data": "2026-11-22",
       "edicao": "Definitive Edition",
       "notas": "Gerador de prompts de imagem mais fácil: agora funciona direto, sem precisar entrar em conta nenhuma nem colar token. É só clicar em \"Gerar prompts com IA\".\nContador de uso: a tela do gerador mostra quantos prompts ainda restam no mês (são 60 por mês).\nMais estabilidade nas legendas com IA: a geração de legendas e o \"Configure para mim\" ficaram mais estáveis e com mensagens de erro mais claras.\nCódigo de vendedor: se você ativou o LocalInsta com o código de um vendedor, ele passa a ser vinculado aos seus pagamentos automaticamente.\nMais segurança: melhoramos a proteção da comunicação entre o app e os nossos servidores.\nCorreções: resolvemos o erro que podia aparecer ao gerar prompts de imagem e fizemos pequenos ajustes de desempenho.",
-      "instalador": "Instalador_LocalInsta_v1.5.3_Definitive_Edition.exe"
+      "instalador": ""
     },
     {
       "versao": "1.5.2",
